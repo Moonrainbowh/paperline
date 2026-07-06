@@ -1,0 +1,19 @@
+interface:
+  display_name: "Paper Navigator"
+  short_description: "通用科研论文导航、证据链审计与投稿预检"
+  default_prompt: "Use $paper-navigator to route my research paper task and produce the next evidence-grounded artifact."
+multi_agent:
+  default_mode: "read-only unless explicitly approved"
+  roles:
+    - name: "search-agent"
+      output: "query log, source coverage, candidate table, failed sources"
+    - name: "reader-agent"
+      output: "paper reading card, source anchors, can_support, cannot_support"
+    - name: "provenance-agent"
+      output: "data/code/result lineage, reproducibility gaps, artifact risks"
+    - name: "figure-agent"
+      output: "claim-to-figure contract, chart choice, caption notes, visual QA"
+    - name: "citation-agent"
+      output: "claim segmentation, support grade, metadata risks"
+    - name: "reviewer-agent"
+      output: "reviewer objections, decision blockers, revision priorities"
