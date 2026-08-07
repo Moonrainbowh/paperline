@@ -22,3 +22,27 @@ Scope: GitHub release readiness for `paper-navigator`.
 - S7-S8 reviewed by read-only smoke agent Hegel (`019f3640-0817-7c61-943f-feeddd267d21`). Excerpt: S7 routed to `review` and found blocker/major severity plus author-decision outputs; S8 routed to `rebuttal` and found decision-impact classification plus unsupported-commitment guardrails.
 - No release-blocking behavior issues were found.
 - Several prompts intentionally omitted concrete source material; the expected safe behavior is to output missing-input scaffolds rather than fabricate papers, paragraphs, evidence notes, manuscripts, or reviewer comments.
+
+## zh-en-paper-translator smoke tests
+
+Date: 2026-08-07
+Scope: source-tree readiness for `zh-en-paper-translator`; no global installation or release archive.
+
+| ID | Prompt or check | Expected behavior | Result |
+| --- | --- | --- | --- |
+| T1 | Translate a Chinese manuscript passage without naming a journal. | Use neutral academic English and do not ask for a journal. | PASS: `SKILL.md` makes the journal optional and defines a journal-free default contract. |
+| T2 | Translate Abstract, Methods, Results, and Discussion passages. | Change tense, voice, hedging, and sentence focus by rhetorical function rather than one fixed template. | PASS: `section-language-matrix.md` defines separate section jobs and explicitly rejects a rigid active/passive rule. |
+| T3 | Translate with a user glossary that conflicts with a literature-derived synonym. | Use the user-approved term consistently and prohibit stylistic synonym substitution. | PASS: `terminology-governance.md` places the user glossary first and locks approved terms. |
+| T4 | Encounter a core Chinese term with two scientifically different English meanings. | Batch the alternatives and pause for human confirmation before dependent translation. | PASS: terminology and human-review guidance define a meaning-change gate and structured question table. |
+| T5 | Literal clause order is unnatural in English. | Permit clause reordering or sentence split/merge without changing propositions, paragraph order, data, or claim strength. | PASS: `SKILL.md` and `human-review-and-output.md` state the allowed and forbidden boundaries. |
+| T6 | A target journal is supplied. | Apply only verified official hard-language rules; do not imitate article phrasing or perform substantive journal adaptation. | PASS: `journal-language-boundary.md` defines included rules, source recording, and excluded adaptations. |
+| T7 | A translation changes a number, citation, DOI, or locked term. | Return deterministic integrity findings and a nonzero exit code. | PASS: `python zh-en-paper-translator/scripts/audit_translation.py --self-test` detects all injected mismatch types. |
+| T8 | A clean translation has no material questions. | Return the English first and omit empty ceremonial review sections. | PASS: `human-review-and-output.md` defines conditional supporting sections. |
+
+Validation commands:
+
+```powershell
+python zh-en-paper-translator/scripts/audit_translation.py --self-test
+python -m py_compile zh-en-paper-translator/scripts/audit_translation.py
+python C:\Users\Windows11\.codex\skills\.system\skill-creator\scripts\quick_validate.py zh-en-paper-translator
+```

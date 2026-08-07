@@ -1,6 +1,11 @@
-# paper-navigator skill
+# paperline academic skills
 
-`paper-navigator` is a generic Codex skill for academic paper workflows. It routes research tasks across literature discovery, paper reading, evidence and provenance auditing, figure planning, manuscript writing, citation support, pre-submission review, and rebuttal planning.
+This repository contains two complementary Codex skills:
+
+| Skill | Scope |
+| --- | --- |
+| `paper-navigator` | Route evidence-grounded academic research, writing, review, citation, figure, and rebuttal workflows. |
+| `zh-en-paper-translator` | Translate Chinese manuscripts into faithful academic English with section-aware language, controlled terminology, human confirmation gates, and deterministic integrity checks. |
 
 This repository contains workflow guidance only. It does not contain datasets, model checkpoints, manuscript drafts, reviewer comments, private notes, or paper-specific intermediate artifacts.
 
@@ -13,6 +18,15 @@ This repository contains workflow guidance only. It does not contain datasets, m
 - Planning publication figures and captions around claims.
 - Running pre-submission risk reviews.
 - Structuring revision and rebuttal work from real comments.
+
+`zh-en-paper-translator` additionally supports:
+
+- Translating titles, abstracts, introductions, methods, results, discussions, conclusions, captions, and complete manuscripts.
+- Preserving facts, numbers, units, equations, citations, claim strength, and paragraph order while reconstructing natural English sentences.
+- Enforcing terminology priority: user-confirmed glossary, official English, standards, authoritative literature, then pending candidates.
+- Pausing for human confirmation only when terminology or source ambiguity changes scientific meaning.
+- Applying target-journal language rules only when supplied and officially verifiable; the journal is not required.
+- Auditing numeric tokens, citation markers, DOI, URLs, locked terms, forbidden terms, and residual Chinese text.
 
 ## Repository layout
 
@@ -40,11 +54,22 @@ paper-navigator-skill/
       research-context-passport.md
       review-risk-audit.md
       writing-claim-evidence.md
+  zh-en-paper-translator/
+    SKILL.md
+    agents/
+      openai.yaml
+    references/
+      human-review-and-output.md
+      journal-language-boundary.md
+      section-language-matrix.md
+      terminology-governance.md
+    scripts/
+      audit_translation.py
 ```
 
 ## Installation
 
-Copy the `paper-navigator` folder into a local Codex skills directory, then restart Codex.
+Copy the desired skill folder into a local Codex skills directory, then restart Codex.
 
 Common locations:
 
@@ -65,6 +90,8 @@ Use paper-navigator to plan the next safe step for this manuscript.
 Use $paper-navigator to plan the next safe step for this manuscript.
 Use paper-navigator to audit the claim-evidence chain in this Results draft.
 Use paper-navigator to prepare a rebuttal plan from these reviewer comments.
+Use $zh-en-paper-translator to translate this Chinese Results section into faithful academic English.
+Use $zh-en-paper-translator with this approved terminology table to translate the complete manuscript.
 ```
 
 ## Release archive verification
