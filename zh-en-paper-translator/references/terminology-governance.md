@@ -12,6 +12,12 @@ Resolve every technical term using this order:
 
 Never let a lower-priority source override a higher-priority decision without the user's approval.
 
+## Bundled Domain Reference
+
+For salt-cavern storage and geotechnical AI/ML manuscripts, read `literature/salt-cavern-geotech-ai-guide.md` and use `termbases/salt-cavern-geotech-ai.tsv` as a candidate source layer. The bundled rows are either `verified` from a standard or literature source, or `pending` for contextual review; none of them is automatically `locked` for a new manuscript.
+
+Create a document-specific subset rather than passing the entire broad termbase to the audit script. Apply higher-priority user and author choices over that subset, record the override source, and keep the original reference pack unchanged unless the user explicitly asks to update the reusable resource.
+
 ## Ledger Schema
 
 Use a Markdown table or a UTF-8 TSV file with these columns:

@@ -12,18 +12,20 @@ Before translating dependent passages, batch only unresolved terms whose alterna
 
 Pause when the Chinese permits multiple scientific interpretations, contradicts itself, or appears to contain an error. Quote the smallest relevant Chinese span and explain the translation consequence. Do not repair the source silently.
 
+For scanned or hybrid PDFs, also pause when OCR cannot reliably distinguish prose, table geometry, a number/unit, citation, or equation symbol. Treat OCR-derived tables and formulas as requiring human review even when no obvious error is detected.
+
 ### Gate 3: Final integrity review
 
 After translation, list only material warnings: unresolved terminology, possible omissions, protected-element mismatches, claim-strength changes, or source ambiguities. A clean passage needs no ceremonial approval gate.
 
 ## Default Output Order
 
-1. **English translation**
+1. **English translation or final translated artifact(s)**
 2. **Terminology decisions** — include only new, changed, pending, or source-backed terms
 3. **Questions requiring confirmation** — omit when none
 4. **Integrity warnings** — omit when none
 
-For a full manuscript, provide the terminology ledger as a reusable companion artifact when the environment supports files.
+For a full manuscript, provide the terminology ledger as a reusable companion artifact when the environment supports files. Return Markdown, DOCX, and LaTeX in the same source format. Return both an English PDF and an editable English DOCX for PDF input.
 
 ## Translation Boundary
 

@@ -16,6 +16,8 @@ node_modules/
 *.xlsx
 *.csv
 *.tsv
+!zh-en-paper-translator/references/literature/*.tsv
+!zh-en-paper-translator/references/termbases/*.tsv
 *.bib
 *.ris
 *.nbib

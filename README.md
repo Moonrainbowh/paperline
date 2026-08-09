@@ -27,6 +27,11 @@ This repository contains workflow guidance only. It does not contain datasets, m
 - Pausing for human confirmation only when terminology or source ambiguity changes scientific meaning.
 - Applying target-journal language rules only when supplied and officially verifiable; the journal is not required.
 - Auditing numeric tokens, citation markers, DOI, URLs, locked terms, forbidden terms, and residual Chinese text.
+- Reading and writing Markdown, DOCX, PDF, and LaTeX manuscripts with format-specific protection rules.
+- Translating body text, table content, captions, notes, and natural-language formula labels while preserving mathematical structure.
+- Returning same-format Markdown/DOCX/LaTeX output; PDF input returns both an English PDF and editable DOCX.
+- Supporting scanned PDFs through an OCR route with mandatory review of OCR prose, tables, numbers, and formulas.
+- Preserving embedded figures without translating or editing text inside images.
 
 ## Repository layout
 
@@ -59,11 +64,18 @@ paper-navigator-skill/
     agents/
       openai.yaml
     references/
+      docx-workflow.md
+      format-routing.md
       human-review-and-output.md
       journal-language-boundary.md
+      latex-workflow.md
+      markdown-workflow.md
+      pdf-workflow.md
       section-language-matrix.md
+      tables-formulas.md
       terminology-governance.md
     scripts/
+      audit_document_structure.py
       audit_translation.py
 ```
 
@@ -92,6 +104,9 @@ Use paper-navigator to audit the claim-evidence chain in this Results draft.
 Use paper-navigator to prepare a rebuttal plan from these reviewer comments.
 Use $zh-en-paper-translator to translate this Chinese Results section into faithful academic English.
 Use $zh-en-paper-translator with this approved terminology table to translate the complete manuscript.
+Use $zh-en-paper-translator to translate this DOCX and preserve its tables and Word equations.
+Use $zh-en-paper-translator to translate this scanned PDF and return an English PDF plus editable DOCX.
+Use $zh-en-paper-translator to translate this salt-cavern paper using the bundled salt-cavern and geotechnical-AI terminology reference.
 ```
 
 ## Release archive verification
@@ -113,6 +128,9 @@ The hash printed by `Get-FileHash` should match the first field in `paper-naviga
 - Browser search, web extraction, and multi-agent review depend on the host agent environment.
 - When those tools are unavailable, use the same workflow sequentially: gather sources, build reading cards, audit provenance, then synthesize.
 - The skill does not require bundled datasets, model files, API keys, or private materials.
+- DOCX and PDF translation require a host runtime with Word/OOXML, PDF extraction, OCR when needed, and page-rendering capabilities.
+- PDF output preserves logical content and a reviewed layout, not pixel-identical line breaks or pagination.
+- `zh-en-paper-translator` includes a curated, source-linked salt-cavern/geotechnical-AI literature catalogue and bilingual termbase. These resources are reference layers; user-confirmed and author-provided terminology still takes precedence.
 
 ## Design principles
 

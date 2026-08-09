@@ -1,4 +1,4 @@
 interface:
   display_name: "Chinese-to-English Paper Translator"
-  short_description: "Faithful academic translation with controlled terminology"
-  default_prompt: "Use $zh-en-paper-translator to translate this Chinese manuscript section into faithful academic English."
+  short_description: "Faithful multi-format translation with terminology control"
+  default_prompt: "Use $zh-en-paper-translator to translate this Chinese manuscript or document into faithful academic English while preserving its structure."

@@ -1,0 +1,128 @@
+zh	en	status	authority	source	forbidden	notes	source_id	category
+盐穴	salt cavern	verified	literature	The role of underground salt caverns for large-scale energy storage		Generic engineering object; use plural when grammar requires.	SC13	salt-cavern
+地下盐穴	underground salt cavern	verified	literature	The role of underground salt caverns for large-scale energy storage		Do not use underground cavity when the source specifically means a salt cavern.	SC13	salt-cavern
+储气盐穴	gas storage salt cavern	verified	literature	Creep deformation analysis of gas storage in salt caverns		Use attributively; recast as salt cavern for gas storage when clearer.	SC06	salt-cavern
+盐穴地下储气	underground gas storage in salt caverns	verified	literature	Key technologies for salt-cavern underground gas storage construction and evaluation		Phrase-level entry.	SC21	salt-cavern
+盐穴储气库	salt-cavern gas storage facility	pending	inferred	API RP 1170 and SC21		Could mean the cavern, the well, or the whole facility; confirm from context before locking.	S01|SC21	salt-cavern
+地下储氢	underground hydrogen storage	verified	literature	Comprehensive review of geomechanics of underground hydrogen storage		Define UHS at first use if repeatedly used.	SC11	hydrogen-storage
+盐穴储氢	hydrogen storage in salt caverns	verified	literature	Large-scale hydrogen energy storage in salt caverns		Use salt cavern hydrogen storage attributively where grammatical.	SC14	hydrogen-storage
+地质储氢	geological hydrogen storage	verified	literature	Comprehensive review of geomechanics of underground hydrogen storage		Geo-storage of hydrogen is an acceptable title-style variant, not the default prose form.	SC11|SC12	hydrogen-storage
+压缩空气储能	compressed air energy storage	verified	literature	Analysis of compressed air storage caverns in rock salt		Define CAES at first use.	SC08	caes
+盐穴压缩空气储能	salt cavern compressed air energy storage	verified	literature	Long-term stability analysis of salt cavern compressed air energy storage		Use SC-CAES only if the manuscript defines it.	SC16	caes
+地下能源储存	underground energy storage	verified	literature	Stability and serviceability of underground energy storage caverns		Storage rather than reserve.	SC07	energy-storage
+水溶开采	solution mining	verified	standard	API RP 1170		Process term.	S01	solution-mining
+水溶造腔	solution mining	verified	standard	API RP 1170		Use solution-mined cavern for the resulting object, not for the process.	S01	solution-mining
+溶腔	solution-mined cavern	verified	standard	API RP 1170		Object produced by solution mining.	S01	solution-mining
+造腔	cavern construction	pending	inferred	Energy storage salt cavern construction and evaluation technology		May instead mean solution mining, leaching, or a specific construction stage; confirm locally.	SC23	solution-mining
+扩腔	cavern enlargement	verified	literature	Solution mining technology of enlarging space for thick-sandwich salt cavern storage		Use when an existing cavern is enlarged.	SC22	solution-mining
+注水	water injection	verified	literature	Solution mining technology of enlarging space for thick-sandwich salt cavern storage		Check whether injected fluid is fresh water or undersaturated brine.	SC22	solution-mining
+采卤	brine production	pending	inferred	Solution mining literature		Could refer to brine withdrawal, brine extraction, or production as an industrial process.	SC22	solution-mining
+卤水	brine	verified	literature	Solution mining literature		Do not translate as saline water when process brine is meant.	SC22	solution-mining
+盐岩	rock salt	verified	literature	Mineralogy, microstructures and geomechanics of rock salt		Use rock salt for the geomaterial; salt rock is common in some translated titles but is not the default.	SC24	geology
+层状盐岩	bedded rock salt	verified	literature	Analysis of compressed air storage caverns in rock salt; bedded salt storage papers		Bedded salt is acceptable when formation context is explicit.	SC08|SC15	geology
+盐层	salt formation	verified	literature	Geomechanical simulation of energy storage in salt formations		May be salt bed in a stratigraphic description.	SC09	geology
+盐丘	salt dome	verified	literature	Salt-cavern storage literature		Geological structure, not cavern shape.	SC13	geology
+夹层	interbed	pending	inferred	Bedded-salt literature		Use nonsalt interbed or mudstone interbed when lithology is known; interlayer may be correct in non-stratigraphic contexts.	SC15|SC17	geology
+非盐夹层	nonsalt interbed	verified	literature	Bedded-salt cavern literature		Hyphenate nonsalt consistently.	SC17	geology
+围岩	surrounding rock	pending	inferred	Gas seepage in formations surrounding bedded gas storage salt cavern		Host rock or surrounding formation may be more precise depending on scale.	SC20	geomechanics
+腔壁	cavern wall	verified	literature	Creep deformation analysis of gas storage in salt caverns		Physical boundary of the cavern.	SC06	geometry
+腔顶	cavern roof	verified	literature	Salt-cavern stability literature		Use roof rather than top for an engineering surface.	SC01	geometry
+腔底	cavern floor	verified	literature	Salt-cavern stability literature		Use floor rather than bottom for an engineering surface.	SC01	geometry
+盐穴形状	cavern shape	verified	literature	Natural gas storage caverns with different shapes		Use geometry when dimensions and spatial representation are also meant.	SC17	geometry
+盐穴形态	cavern geometry	pending	inferred	Shape and geometry literature		Morphology may be suitable for descriptive shape analysis; confirm the intended scope.	SC17|SC18	geometry
+盐穴几何形态	cavern geometry	verified	literature	U-shaped horizontal salt cavern stability analysis		Includes dimensions and shape.	SC18	geometry
+水平盐穴	horizontal salt cavern	verified	literature	Stability analysis of U-shaped horizontal salt cavern		Preserve U-shaped when stated.	SC18	geometry
+盐穴体积	cavern volume	verified	literature	Creep deformation analysis of gas storage in salt caverns		Do not substitute storage capacity unless gas capacity is meant.	SC06	geometry
+体积演化	volume evolution	verified	literature	Salt-cavern construction and simulation literature		Time-varying volume.	SC09|SC23	geometry
+体积收敛	volume convergence	verified	literature	Salt-cavern stability literature		Engineering deformation measure; do not replace with volume reduction if the defined metric is convergence.	SC16	creep
+盐穴收缩	cavern shrinkage	verified	literature	Creep deformation analysis of gas storage in salt caverns		Often creep-induced; preserve mechanism only if stated.	SC06	creep
+半径剖面	radius profile	pending	inferred	Cavern geometry and sonar-survey context		Could be radial profile or radius distribution depending on the coordinate definition.	SC17|SC23	geometry
+声呐测腔	sonar survey	verified	literature	Salt-cavern construction and evaluation literature		Use sonar survey of the cavern when a noun phrase needs an object.	SC23	monitoring
+声呐测量	sonar survey	verified	literature	Salt-cavern construction and evaluation literature		Not ultrasonic testing.	SC23	monitoring
+最大允许气体压力	maximum allowable gas pressure	verified	literature	Determination of the maximum allowable gas pressure		Use the exact defined pressure basis from the manuscript.	SC02	operation
+最小运行压力	minimum operating pressure	verified	literature	Salt-cavern operation literature		Do not conflate with minimum internal pressure unless the source does.	SC06	operation
+注采循环	injection–withdrawal cycle	verified	literature	Hydromechanical modelling under cyclic hydrogen injection and withdrawal		Use an en dash between injection and withdrawal.	SC10	operation
+循环注采	cyclic injection and withdrawal	verified	literature	Hydromechanical modelling under cyclic hydrogen injection and withdrawal		Phrase-level entry.	SC10	operation
+注气	gas injection	verified	literature	Salt-cavern cyclic operation literature		Use hydrogen injection when the gas is explicitly hydrogen.	SC10	operation
+采气	gas withdrawal	pending	inferred	Salt-cavern cyclic operation literature		Production may be correct for commercial delivery; confirm operational meaning.	SC10	operation
+垫底气	cushion gas	verified	literature	Creep deformation analysis of gas storage in salt caverns		Cushion gas is preferred over base gas unless an operator defines otherwise.	SC06	operation
+工作气	working gas	verified	literature	Underground gas storage literature		Usable cycling inventory, distinct from cushion gas.	SC13	operation
+高频循环	high-frequency cycling	verified	literature	Rapid cooling of rock salt related to high frequency cycling		Hyphenate when attributive.	SC05	operation
+循环荷载	cyclic loading	verified	literature	Stability and serviceability under mechanical cyclic loading		Use thermo-mechanical cyclic loading when temperature coupling is included.	SC07	loading
+快速降温	rapid cooling	verified	literature	Experimental and numerical investigation into rapid cooling of rock salt		Do not strengthen to thermal shock unless the source establishes it.	SC05	thermal
+热-力耦合	thermo-mechanical coupling	verified	literature	Analysis considering thermo-mechanical cyclic loading		Use an en dash or hyphen consistently according to house style.	SC08	coupling
+热-水-力耦合	thermo-hydro-mechanical coupling	verified	literature	Hydromechanical and coupled salt-cavern literature		Define THM at first use; do not omit the hydraulic component.	SC10	coupling
+水-力耦合	hydromechanical coupling	verified	literature	Hydromechanical modelling of salt caverns		Hydro-mechanical is an accepted orthographic variant; keep one form consistently.	SC10	coupling
+蠕变	creep	verified	literature	Creep deformation analysis of gas storage in salt caverns		Time-dependent deformation mechanism.	SC06	creep
+稳态蠕变	steady-state creep	verified	literature	Creep deformation analysis of gas storage in salt caverns		Do not use secondary creep unless the constitutive-stage equivalence is explicit.	SC06	creep
+瞬态蠕变	transient creep	verified	literature	Rock-salt creep literature		Primary creep may be correct for a specified creep stage.	SC06	creep
+蠕变-疲劳交互作用	creep–fatigue interaction	verified	literature	Long-term stability under creep-fatigue interaction		Use an en dash between creep and fatigue.	SC16	creep
+扩容	dilatancy	verified	literature	Dilatancy Criteria for Salt Cavern Design		Geomechanical inelastic volume increase; not cavern enlargement.	SC03	damage
+扩容准则	dilatancy criterion	verified	literature	Dilatancy Criteria for Salt Cavern Design		Use criteria in plural when multiple formulations are compared.	SC03	damage
+拉伸准则	tensile criterion	verified	literature	Dilatancy and tensile criteria for salt cavern design		Failure criterion may be added only if defined that way.	SC04	damage
+拉伸破坏	tensile failure	verified	literature	Salt-cavern failure criteria literature		Do not substitute tensile fracture unless a fracture is demonstrated.	SC04	damage
+剪切破坏	shear failure	verified	literature	Salt-cavern failure analysis literature		Preserve criterion or mechanism context.	SC04	damage
+塑性区	plastic zone	verified	literature	Salt-cavern stability analysis literature		Use plastic volume only for a volume-based metric.	SC17	damage
+损伤区	damaged zone	verified	literature	Rock-salt damage and seepage literature		Disturbed zone is a different concept.	SC20	damage
+渗流	seepage	pending	inferred	Theoretical research on gas seepage around a bedded salt cavern		Flow, seepage, and migration are not interchangeable; choose from the governing formulation.	SC20	transport
+气体渗流	gas seepage	verified	literature	Theoretical research on gas seepage in formations surrounding a salt cavern		Use gas flow if Darcy-scale flow is explicitly formulated that way.	SC20	transport
+氢气运移	hydrogen migration	verified	literature	Hydrogen migration in rock salt for tight underground storage		Broader than seepage and may include diffusion.	SC11	transport
+渗透率	permeability	verified	standard	ASTM D653		Use intrinsic permeability or hydraulic conductivity only when the measured quantity supports it.	S02	transport
+孔隙率	porosity	verified	standard	ASTM D653		State effective porosity when that specific quantity is measured.	S02	transport
+密封性	containment integrity	pending	inferred	Salt-cavern safety and hydrogen-storage reviews		Could mean tightness, sealing performance, or system-level containment integrity; confirm scope.	SC01|SC11	integrity
+盐穴完整性	cavern integrity	verified	literature	Salt-cavern safety and stability literature		Distinct from well integrity.	SC01	integrity
+井筒完整性	well integrity	verified	standard	API RP 1170		Use storage well integrity when the full facility context requires it.	S01	integrity
+稳定性	stability	verified	literature	Stability and serviceability of underground energy storage caverns		Do not imply safety acceptance unless criteria are supplied.	SC07	geomechanics
+适用性	serviceability	pending	inferred	Stability and serviceability of underground energy storage caverns		Only use for performance under service conditions; applicability is different.	SC07	geomechanics
+地质力学	geomechanics	verified	literature	Geomechanics of underground hydrogen storage		Use geomechanical as the adjective.	SC11	geomechanics
+地质力学模拟	geomechanical simulation	verified	literature	Geomechanical simulation of energy storage in salt formations		Do not substitute numerical simulation if the mechanics scope matters.	SC09	geomechanics
+数值模拟	numerical simulation	verified	literature	Geotechnical numerical simulation literature		Name FEM/FDM/DEM only when the method is known.	AI09	modelling
+有限元法	finite element method	verified	literature	Geotechnical numerical simulation and surrogate-modelling literature		Define FEM at first use.	AI09	modelling
+本构模型	constitutive model	verified	literature	Machine learning applications in constitutive modeling of soils		Use constitutive modelling/modeling consistently with selected spelling.	AI03	modelling
+参数反演	parameter inversion	pending	inferred	Geotechnical inverse analysis literature		Parameter identification or inverse analysis may better match the actual procedure.	AI06	inverse
+参数识别	parameter identification	verified	literature	Physics-informed and uncertainty-aware geotechnical modelling literature		Use identification rather than calibration when estimating unknown parameters from observations.	AI06|AI07	inverse
+人工智能	artificial intelligence	verified	standard	ISO/IEC 22989:2022		Define AI at first use when abbreviated.	S03	ai
+机器学习	machine learning	verified	standard	ISO/IEC 22989:2022		Define ML at first use when abbreviated.	S03	ai
+深度学习	deep learning	verified	literature	Physics-informed deep learning for one-dimensional consolidation		Do not use as a synonym for all neural networks.	AI05	ai
+人工神经网络	artificial neural network	verified	literature	Artificial neural systems in geotechnical engineering		Define ANN at first use.	AI01	ai
+反向传播神经网络	backpropagation neural network	verified	literature	Geotechnical artificial neural-network literature	BP neural network	Avoid the Chinglish abbreviation BP neural network unless the cited method or software uses it officially.	AI01	ai
+代理模型	surrogate model	verified	literature	Machine learning–driven surrogate model development for geotechnical numerical simulation	proxy model	Proxy model can imply a different construct; use surrogate model in engineering simulation.	AI09	surrogate
+代理建模	surrogate modelling	verified	literature	Machine learning–driven surrogate model development for geotechnical numerical simulation		Use modeling if the document follows US spelling.	AI09	surrogate
+响应面法	response surface method	verified	literature	Surrogate-modelling literature		Define RSM at first use if used repeatedly.	AI09	surrogate
+高斯过程回归	Gaussian process regression	verified	literature	Surrogate-modelling literature		Define GPR at first use.	AI09	surrogate
+多保真学习	multi-fidelity learning	verified	literature	Physics-based and surrogate machine-learning literature		Hyphenate multi-fidelity.	AI04|AI09	surrogate
+物理信息机器学习	physics-informed machine learning	verified	literature	Physics-informed machine learning in geotechnical engineering		Define PIML at first use; do not automatically replace with physics-based ML.	AI07	physics-informed
+物理信息神经网络	physics-informed neural network	verified	literature	Physics-informed deep learning in geotechnical engineering		Define PINN at first use; plural PINNs when referring to the method family.	AI05|AI07	physics-informed
+基于物理的机器学习	physics-based machine learning	verified	literature	A review of physics-based machine learning in civil engineering		Keep distinct from physics-informed machine learning when the source distinguishes them.	AI04	physics-informed
+物理约束	physical constraint	pending	inferred	Physics-informed machine-learning literature		Could be governing equation, boundary condition, conservation law, or penalty term; translate specifically where possible.	AI07	physics-informed
+物理一致性	physical consistency	verified	literature	Physics-informed machine-learning literature		Do not claim physical validity unless validated.	AI07	physics-informed
+数据驱动	data-driven	verified	literature	Data-driven and physics-informed sparse dictionary learning		Hyphenate when attributive.	AI08	data
+多源数据融合	multi-source data fusion	verified	literature	Real-time fusion of multi-source monitoring data		Hyphenate multi-source.	AI08	data
+监测数据	monitoring data	verified	literature	Real-time fusion of multi-source monitoring data		Instrumentation data may be more specific in some contexts.	AI08	data
+特征工程	feature engineering	verified	literature	Geotechnical machine-learning reviews		Do not use feature extraction unless that specific operation is meant.	AI10	data
+输入特征	input feature	verified	literature	Geotechnical machine-learning reviews		Use predictor only when the statistical role is intended.	AI10	data
+目标变量	target variable	verified	literature	Geotechnical machine-learning reviews	label	Label is acceptable for classification; target variable is safer for continuous geotechnical prediction.	AI10	data
+训练集	training set	verified	standard	ISO/IEC 22989:2022		Dataset is one word.	S03	validation
+验证集	validation set	verified	standard	ISO/IEC 22989:2022		Do not translate as verification set in ML model selection.	S03	validation
+测试集	test set	verified	standard	ISO/IEC 22989:2022		Keep isolated from model selection when describing methodology.	S03	validation
+数据划分	data split	verified	literature	Geotechnical machine-learning reviews		Dataset partition is acceptable when referring to the act or scheme.	AI10	validation
+交叉验证	cross-validation	verified	literature	Geotechnical machine-learning reviews		Hyphenate cross-validation.	AI10	validation
+数据泄漏	data leakage	verified	literature	Machine-learning validation literature	gas leakage	In ML context only; never use for gas escape from a cavern.	AI10	validation
+模型选择泄漏	model-selection leakage	verified	literature	Machine-learning validation literature		Hyphenate model-selection when attributive.	AI10	validation
+测试集复用	test-set reuse	verified	literature	Machine-learning validation literature		Use test-set reuse when the same test data influence repeated decisions.	AI10	validation
+超参数优化	hyperparameter optimization	verified	literature	Geotechnical machine-learning reviews		Define HPO at first use.	AI10	optimization
+贝叶斯优化	Bayesian optimization	verified	literature	Geotechnical machine-learning literature		Capitalize Bayesian.	AI10	optimization
+消融实验	ablation study	verified	literature	Machine-learning evaluation literature	ablation experiment	Ablation study is the conventional academic term.	AI10	evaluation
+基线模型	baseline model	verified	literature	Geotechnical machine-learning reviews		Name the baseline type where possible.	AI10	evaluation
+泛化能力	generalization performance	verified	literature	Geotechnical machine-learning reviews		Generalizability is acceptable for a broader property; do not overclaim from one test set.	AI10	evaluation
+外推	extrapolation	verified	literature	Geotechnical uncertainty and ML literature		Distinguish extrapolation from interpolation.	AI06|AI10	evaluation
+不确定性量化	uncertainty quantification	verified	literature	Geotechnical uncertainty, modeling, and decision making		Define UQ at first use.	AI06	uncertainty
+偶然不确定性	aleatory uncertainty	verified	literature	Geotechnical uncertainty, modeling, and decision making		Data variability that is treated as irreducible under the model.	AI06	uncertainty
+认知不确定性	epistemic uncertainty	verified	literature	Geotechnical uncertainty, modeling, and decision making		Knowledge uncertainty; potentially reducible with information.	AI06	uncertainty
+可解释人工智能	explainable artificial intelligence	verified	standard	ISO/IEC 22989:2022		Define XAI at first use only if the manuscript uses the abbreviation.	S03	interpretability
+可解释性	interpretability	pending	inferred	AI and geotechnical ML literature		Explainability and interpretability are not always synonymous; follow the method and claim.	S03|AI10	interpretability
+时间序列预测	time-series forecasting	verified	literature	Geotechnical machine-learning literature		Hyphenate time-series when attributive.	AI10	sequence
+序列模型	sequence model	verified	literature	Geotechnical machine-learning literature		Recurrent model is narrower.	AI10	sequence
+循环神经网络	recurrent neural network	verified	literature	Geotechnical neural-network literature		Define RNN at first use.	AI01	sequence
+门控循环单元	gated recurrent unit	verified	literature	Machine-learning terminology		Define GRU at first use.	AI10	sequence
+长短期记忆网络	long short-term memory network	verified	literature	Machine-learning terminology		Define LSTM at first use.	AI10	sequence
