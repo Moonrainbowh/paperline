@@ -1,61 +1,91 @@
-# Writing with Claim-Evidence Discipline
+# 主张—证据—边界约束下的中文论文写作
 
-Use this file for drafting, revising, or polishing academic manuscript sections.
+用于起草、修改或润色中文论文。不要先追求文风；先确定本节要证明什么、证据是什么、结论到哪里为止。
 
-## First Principle
+## 按任务加载
 
-Do not start with style. Start with what the section must prove and what evidence exists.
+- 整篇中文稿：同时读取 `manuscript-finalization-workflow.md` 和 `manuscript-status-quality-gates.md`。
+- 任一章节：同时读取 `chinese-writing-rules.md` 和相应章节文件。
+- 逻辑检查：读取 `reverse-outline-consistency.md`。
 
-## Claim Map
+这些文件也由主 `SKILL.md` 直接路由，避免依赖深层引用链。
 
-Before drafting substantial text, create:
+## 写作前主张地图
 
-| Claim | Evidence | Boundary | Citation needed | Strength | Manuscript location |
-| --- | --- | --- | --- | --- | --- |
+| 主张ID | 原子主张 | 证据 | 来源锚点 | 边界 | 需要引用 | 强度 | 章节位置 | 状态 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
-Strength options: `strong`, `moderate`, `weak`, `background-only`, `unsupported`.
+强度使用：
 
-## Section Moves
+- `strong`：有直接、充分证据。
+- `moderate`：有直接但范围有限的证据。
+- `weak`：只有间接、趋势或不完整证据。
+- `background-only`：只能支撑背景。
+- `unsupported`：当前没有足够证据。
 
-| Section | Core moves |
-| --- | --- |
-| Abstract | problem, gap, approach, key evidence, implication, boundary |
-| Introduction | concrete problem, prior limits, opportunity, contribution, paper map |
-| Related work | organize by argument, not by one-paper summaries |
-| Methods | enough detail to reproduce logic and evaluate validity |
-| Results | claim first, evidence next, boundary and exceptions visible |
-| Discussion | interpret, compare, explain limits, state implications cautiously |
-| Conclusion | return to contribution without adding new evidence |
+状态使用 `closed`、`partial`、`unsupported`、`conflict` 或 `author-decision`。
 
-## Drafting Protocol
+## 章节职责
 
-1. List the claim(s) for the section.
-2. Attach evidence and source anchors.
-3. Mark what cannot be claimed.
-4. Draft the section in the target language.
-5. Add notes for missing citations, missing results, or author decisions.
-6. Tighten style only after logic is stable.
+| 章节 | 核心职责 | 不得代替的内容 |
+| --- | --- | --- |
+| 标题/关键词 | 准确标识对象、方法/发现和范围 | 无证据的性能、因果或宣传口号 |
+| 摘要 | 问题、缺口、方法、关键证据、意义和边界的压缩映射 | 正文没有的新主张 |
+| 引言 | 建立价值、已有路径、精确缺口、本文路线和贡献承诺 | 长篇方法细节或无证据结果承诺 |
+| 相关工作 | 按技术主题综合并公平定位本文 | 按作者罗列或贬低竞争工作 |
+| 方法 | 让研究逻辑可评估、关键步骤可复现 | 观察结果和结论性宣传 |
+| 结果 | 报告在什么条件下观察到什么及其不确定性 | 长机制推测和过度外推 |
+| 讨论 | 解释、比较、替代解释、意义、代价和局限 | 新增数据或未报告分析 |
+| 结论 | 闭合贡献、决定性证据、意义和边界 | 新数据、新机制、新引用和新贡献 |
 
-## Safe Language
+## 起草协议
 
-Use cautious language when evidence is local, partial, preliminary, or indirect:
+1. 写出本节唯一任务和必须回答的问题。
+2. 列出本节原子主张，并绑定证据、来源和边界。
+3. 标记不能声称、需要作者决定或需要补证据的内容。
+4. 先生成段落蓝图和主题句序列。
+5. 主题句序列通过后，再按句子功能链扩写中文正文。
+6. 删除内部功能标签，保留清晰主语、条件、指标、单位和比较对象。
+7. 添加缺失引用、结果或作者决策备注；不要把备注伪装成正文。
+8. 运行局部反向提纲和主张强度检查。
+9. 逻辑稳定后再压缩和润色语言。
 
-- "suggests" instead of "proves",
-- "in this dataset/setting" instead of "generally",
-- "is associated with" instead of causal language unless causality is established,
-- "may improve" instead of "guarantees".
+完整章节或大幅重写仍有实质歧义时，先输出对齐块并等待确认；短段落且主张、证据、边界清楚时可以直接写。
 
-## Output Template
+## 安全表达
+
+证据局部、间接、初步或相关性较强时，主动缩小措辞：
+
+- 使用“在本数据/工况/样本范围内”，不要无条件泛化。
+- 使用“表明、支持、提示、与……一致”，不要随意使用“证明、导致、决定”。
+- 使用“与……相关”，除非研究设计支持因果。
+- 使用“可能改善、在当前条件下改善”，不要写“保证改善”。
+- “显著”必须有统计或工程判据。
+
+如果最佳证据只支持主张的一部分，缩小主张；没有证据时标记 `unsupported`，不要用引用或修辞遮盖。
+
+## 修订协议
+
+- 用户只指出局部错误时，只修改受影响的主张和段落，保留其他已确认文字。
+- 改动核心主张、数字、术语或边界时，沿全文主张合同检查传播位置。
+- 如果局部修改实际要求重排章节或改变创新点，先展示新的结构和影响范围，等待作者确认。
+- 每次修订只重新运行与改动相关的局部门；核心主张变化时重新运行跨章节门。
+
+## 输出模板
 
 ```text
-Section:
-Purpose:
-Claims:
-Evidence used:
-Boundary:
-Draft:
-Missing support:
-Revision notes:
+章节：
+章节任务：
+主张：
+使用证据：
+来源锚点：
+适用边界：
+段落蓝图：
+中文正文：
+缺失支持：
+需作者决定：
+修订说明：
+当前状态：
 ```
 
-If the user asks only for polishing, still flag unsupported or over-strong claims.
+用户只要求润色时，也要指出不受支持、过强或位置错误的主张；不要因任务名称是“润色”而跳过证据边界。

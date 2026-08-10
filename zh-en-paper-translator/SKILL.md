@@ -1,6 +1,6 @@
 ---
 name: zh-en-paper-translator
-description: Translate Chinese academic manuscripts into faithful, publication-ready academic English while preserving facts, data, tables, equations, citations, claim strength, structure, and document formatting. Use for Chinese-to-English translation of pasted text or complete Markdown (.md), Word (.docx), PDF (.pdf), and LaTeX (.tex) manuscripts, including titles, abstracts, sections, captions, table text, equation-adjacent language, footnotes, and supplementary text; for same-format output, terminology-ledger enforcement, OCR-gated scanned PDFs, and translation or document-structure audits. Target-journal handling is optional and limited to explicit official language rules.
+description: Translate Chinese academic manuscripts into faithful, publication-ready academic English while preserving facts, data, tables, equations, citations, claim strength, structure, and document formatting. Use for Chinese-to-English translation of pasted text or complete Markdown (.md), Word (.docx), PDF (.pdf), and LaTeX (.tex) manuscripts, including titles, abstracts, sections, captions, table text, equation-adjacent language, footnotes, and supplementary text; for same-format output, terminology-ledger enforcement, OCR-gated scanned PDFs, translation or document-structure audits, and optional formal full-manuscript handoff from a paper-writing pipeline. Target-journal handling is optional and limited to explicit official language rules.
 ---
 
 # Chinese-to-English Paper Translator
@@ -13,6 +13,7 @@ Translate the manuscript; do not redesign the study or silently rewrite its argu
 - Read `references/terminology-governance.md` whenever technical terms, abbreviations, named methods, materials, software, standards, or a user glossary appear.
 - Read `references/literature/salt-cavern-geotech-ai-guide.md` and load the relevant rows from `references/termbases/salt-cavern-geotech-ai.tsv` when the manuscript concerns salt-cavern storage or geotechnical AI/ML.
 - Read `references/human-review-and-output.md` for every substantial passage or complete manuscript.
+- Read `references/pipeline-handoff.md` when a formal paperline handoff package is supplied or the user explicitly requests pipeline mode.
 - Read `references/journal-language-boundary.md` only when the user provides a target journal or explicitly requests journal-language compliance.
 - Read `references/format-routing.md` whenever the input is a file.
 - Read exactly one matching format guide: `references/markdown-workflow.md`, `references/docx-workflow.md`, `references/pdf-workflow.md`, or `references/latex-workflow.md`.
@@ -26,9 +27,12 @@ Identify, without demanding unnecessary metadata:
 - any user-approved glossary or previously translated passages;
 - the intended output unit: passage, section, or complete manuscript;
 - the source format and required output artifacts;
-- an optional target journal.
+- an optional target journal;
+- the translation mode: `standalone` by default, or `pipeline` only for an explicit formal full-manuscript handoff.
 
 Infer the section from headings or context when safe. Ask only if the section is genuinely ambiguous and the choice would materially change the translation. Do not require a target journal.
+
+Do not infer `pipeline` merely because the input is a complete file. Standalone passages, sections, and manuscripts do not require an `S7` writing status. If a formal paperline handoff package is present, do not bypass its gates by relabeling the task as standalone.
 
 Treat the default contract as:
 
@@ -41,6 +45,14 @@ Treat the default contract as:
 For files, preserve the source and write new outputs with `-en` before the extension. Use same-format output for Markdown, DOCX, and LaTeX. For PDF, always deliver both `source-en.pdf` and the editable companion `source-en.docx`. Never overwrite the source.
 
 ## Execute the Workflow
+
+### 0. Validate an optional pipeline handoff
+
+For `pipeline` mode, read `references/pipeline-handoff.md` before translation. Require an `S7` author-locked Chinese manuscript, an exact locked-package and manuscript version, the exact seven-field `author_lock_record` with `status: locked` bound to the manuscript bytes and wrapper decision, a confirmed target-journal contract, and locked terminology, numbers, units, claim boundaries, and author decisions. Express each locked ledger explicitly as `{inline: ...}` or `{path: ..., sha256: ...}`. Bind the translation to those versions. Pause on a missing field, version mismatch, unresolved blocker, or evidence/contract change that invalidates the lock.
+
+For a JSON handoff, run `python scripts/validate_pipeline_handoff.py handoff.json --verify-files`. This mode verifies the manuscript and referenced-ledger bytes, loads the sibling `journal-navigator` formal validator, and cross-checks the parsed confirmed decision and contract against the payload. A result without `--verify-files` is structural only and must not authorize translation.
+
+For `standalone` mode, proceed without `S7`; preserve the same semantic safeguards and report source ambiguities normally.
 
 ### 1. Freeze protected content
 
@@ -85,6 +97,8 @@ Use `references/tables-formulas.md`. Translate human-readable table content with
 
 When no target journal is supplied, use neutral international academic English and remain internally consistent in spelling and mechanics. When a journal is supplied, apply only verified official hard-language rules according to `references/journal-language-boundary.md`. Never imitate recurring phrases from published papers as a substitute for accurate translation.
 
+In `pipeline` mode, require `target_journal_status: contract-confirmed` and apply target-journal contract content only when the handoff records the same decision path, decision schema version and SHA-256, contract path/version/SHA-256, selection-evidence version, and writing-profile evidence ID. Apply only official mechanical language rules; return substantive restructuring, claim, evidence, section, disclosure, or word-limit changes to the writing pipeline instead of performing them during translation.
+
 ### 8. Run integrity checks
 
 Compare the English against the Chinese source sentence by sentence. Check protected elements, terminology, claim strength, logical relations, and omissions. When files are available, run:
@@ -110,9 +124,14 @@ Pause and request human confirmation when any of these conditions holds:
 - DOCX contains unresolved tracked changes, comments, protected content controls, or unsupported equation objects that make the visible source ambiguous;
 - PDF extraction order is unreliable, a scan requires OCR, or an OCR result changes table or equation meaning;
 - a formula contains natural-language text whose translation boundary cannot be separated safely from its mathematical structure.
+- pipeline mode lacks `S7`, an author-locked package, an exact manuscript SHA-256, a confirmed journal binding, or any locked terminology/number/boundary field required by `references/pipeline-handoff.md`;
+- the supplied manuscript, handoff package, or target-journal contract version differs from the locked versions;
+- a requested journal change would require substantive adaptation rather than official mechanical language compliance.
 
 Do not silently select the most plausible scientific interpretation.
 
 ## Output
 
 Return the English translation first. Then provide only the supporting items required by `references/human-review-and-output.md`: terminology decisions, questions requiring confirmation, and integrity warnings. Do not clutter a clean translation with generic style commentary.
+
+For `pipeline` mode, also return the compact handoff audit defined in `references/pipeline-handoff.md`; do not claim that translation completes journal adaptation, formatting, or submission.

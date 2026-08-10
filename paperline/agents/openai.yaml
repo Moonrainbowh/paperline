@@ -1,0 +1,4 @@
+interface:
+  display_name: "论文全流程编排"
+  short_description: "编排论文中文定稿、期刊筛选、写作画像、英译与投稿前检查"
+  default_prompt: "使用 $paperline 从现有论文材料识别当前阶段，建立可恢复的流程状态，并推进到下一项安全交付。"

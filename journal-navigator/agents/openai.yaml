@@ -1,0 +1,4 @@
+interface:
+  display_name: "期刊导航"
+  short_description: "跨期刊筛选、官方规则核验、双轨写作画像与可验证交接契约"
+  default_prompt: "使用 $journal-navigator 根据我的研究和约束筛选期刊，或为已选期刊建立中文写作契约。"

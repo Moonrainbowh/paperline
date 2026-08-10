@@ -1,52 +1,67 @@
-# Citation Support
+# 引用支持
 
-Use this file for finding, placing, validating, or grading citations.
+查找引用来源、确定引用位置、核验引用或评定引用支持等级时，使用本文件。
 
-## Citation Workflow
+## 引用处理流程
 
-1. Segment the paragraph into atomic claims.
-2. Classify each claim: background, method, data/resource, result, comparison, limitation, or policy.
-3. Identify what kind of source can support it.
-4. Find or verify candidate sources.
-5. Grade support.
-6. Suggest insertion points and wording changes.
+1. 将段落拆分为不可再分的原子主张。
+2. 对每项主张分类：背景、方法、数据/资源、结果、比较、局限性或政策。
+3. 确定能够支持该主张的来源类型。
+4. 查找或核验候选来源。
+5. 记录来源的访问/阅读状态，并定位来源正文锚点。
+6. 只有满足相应证据条件后才评定支持等级。
+7. 建议引用插入位置和措辞修改方案。
 
-## Support Grades
+## 访问、阅读与锚点门
 
-| Grade | Meaning | Use |
+| 状态 | 含义 | 可用于什么 |
 | --- | --- | --- |
-| `A direct` | Source directly supports the exact claim. | Safe for specific claims. |
-| `B partial` | Source supports part of the claim or a nearby setting. | Use with narrowed wording. |
-| `C background` | Source gives context but not proof. | Use for broad background only. |
-| `D weak` | Topic-related but not enough support. | Do not use unless claim is rewritten. |
-| `X conflict` | Source contradicts or complicates the claim. | Mention or resolve conflict. |
+| `metadata-only` | 只核验了题名、作者、年份、DOI 等元数据 | 只能管理候选，不能支持正文主张 |
+| `abstract-read` | 已读摘要，但未检查来源正文 | 发现候选；至多支持摘要明确陈述的宽泛背景，不能评为 A/B |
+| `fulltext-read` | 已检查来源正文的相关位置 | 有正文锚点时可评定 A/B/C/X |
+| `exact-source-passage-provided` | 用户提供了可核对来源身份的精确原文及其位置 | 仅对该段覆盖的命题评定 A/B/C/X |
+| `fulltext-unavailable` | 尚未获得或无法核验正文 | 标记 `source-blocked`，不得用推测补足 |
 
-## Metadata Checks
+用于 A/B 级的来源必须是 `fulltext-read` 或 `exact-source-passage-provided`，并记录页码、章节、段落、表格、图件、公式或标准条款等可复查锚点。若文档没有稳定页码，记录章节标题与段落开头、图表编号或其他可唯一定位的信息。标题永远不是证据；摘要不能支持具体方法、数值、机制、局限或比较主张。
 
-When possible, verify:
+## 支持等级
 
-- title,
-- authors,
-- year,
-- venue,
-- DOI or stable URL,
-- publication status,
-- retraction or correction status when relevant,
-- whether the cited source is primary or secondary.
+| 等级 | 含义 | 用法 |
+| --- | --- | --- |
+| `A direct`（直接支持） | 已检查的来源正文在记录的锚点直接支持该项精确主张。 | 可用于不强于来源的具体主张。 |
+| `B partial`（部分支持） | 已检查的来源正文在记录的锚点只支持主张的一部分，或支持相近情境下的结论。 | 收窄措辞后使用。 |
+| `C background`（背景支持） | 来源提供背景信息，但不能作为该主张的证明。 | 仅用于宽泛的背景陈述。 |
+| `D weak`（弱支持） | 来源与主题相关，但支持力度不足。 | 除非重写主张，否则不要使用。 |
+| `X conflict`（冲突） | 来源与该主张矛盾，或表明该主张比当前表述更复杂。 | 明确提及冲突，或先解决冲突。 |
 
-Do not invent missing metadata. Mark it as missing.
+## 元数据核验
 
-## Citation Map
+条件允许时，核验以下信息：
 
-| Claim | Current wording | Source candidate | Support grade | Required wording change | Metadata status |
-| --- | --- | --- | --- | --- | --- |
+- 标题；
+- 作者；
+- 年份；
+- 发表载体；
+- DOI 或稳定网址；
+- 发表状态；
+- 相关时的撤稿或更正状态；
+- 所引来源属于一手来源还是二手来源。
 
-## Wording Rule
+不得编造缺失的元数据；应将其标记为缺失。
 
-If the best support is partial, narrow the claim until the citation honestly supports it. If no support exists, mark the claim as unsupported rather than hiding the gap behind a citation.
+## 引用映射表
 
-## Handoff
+| 主张ID | 原子主张/当前措辞 | 候选来源 | 访问/阅读状态 | 来源锚点 | 证据摘录或忠实释义 | 支持等级 | 必须进行的措辞修改 | 元数据状态 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
-- Route to `literature-discovery.md` when more searching is needed.
-- Route to `paper-reading.md` when a candidate must be read before it can be used.
-- Route to `writing-claim-evidence.md` when claim wording must be revised.
+“证据摘录或忠实释义”只保留判定所需的短片段或准确释义，不复制长段原文。缺少访问/阅读状态或来源锚点时，A/B 判定无效并转入阅读或全文获取模块。
+
+## 措辞规则
+
+如果最佳来源只能提供部分支持，就收窄主张，直到引用能够如实支持该表述。如果不存在支持来源，应将该主张标记为“无支持”，不得用一条不能支持它的引用掩盖证据缺口。
+
+## 后续路由
+
+- 需要进一步检索时，转至 `literature-discovery.md`。
+- 候选来源必须先经过阅读才能使用时，转至 `paper-reading.md`。
+- 必须修改主张措辞时，转至 `writing-claim-evidence.md`。

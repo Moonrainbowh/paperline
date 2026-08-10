@@ -1,62 +1,67 @@
-# Review and Risk Audit
+# 审稿与风险审计
 
-Use this file for pre-submission review, reviewer-style critique, revision planning, or "will this be rejected?" questions.
+进行投稿前审阅、模拟审稿人批评、修改规划，或回答“这篇论文会不会被拒”之类的问题时，请使用本文件。
 
-## Review Stance
+## 审阅立场
 
-Act like a constructive but skeptical reviewer. Focus on issues that could change acceptance, credibility, reproducibility, or interpretability.
+以建设性但保持质疑的审稿人视角开展审阅。重点检查可能影响稿件接收、可信度、可复现性或可解释性的问题。
 
-## Paper Map
-
-```text
-Paper type:
-Central question:
-Main contribution:
-Strongest evidence:
-Weakest evidence:
-Key claims:
-Target audience or venue:
-Required standards/checklists:
-```
-
-## Risk Categories
-
-| Category | Questions |
-| --- | --- |
-| Novelty | What is new, and compared with what? |
-| Claim support | Does each main claim have direct evidence? |
-| Method validity | Are design, sampling, analysis, and comparators appropriate? |
-| Reproducibility | Can another reader understand and repeat the key steps? |
-| Statistics/uncertainty | Are variability, uncertainty, and limitations visible? |
-| Figures/tables | Do visuals support claims without distortion? |
-| Citations | Are claims supported by primary or appropriate sources? |
-| Scope | Does the manuscript overgeneralize beyond the evidence? |
-| Compliance | Are ethics, data/code availability, disclosures, and reporting requirements addressed? |
-| Writing | Is the story clear without hiding weaknesses? |
-
-## Severity
-
-| Severity | Meaning |
-| --- | --- |
-| `blocker` | Could prevent submission, review, or acceptance. |
-| `major` | Likely reviewer objection; needs revision or evidence. |
-| `moderate` | Important clarity or support issue. |
-| `minor` | Local wording, formatting, or presentation issue. |
-
-## Audit Output
+## 论文概览
 
 ```text
-Overall readiness:
-Top risks:
-Blockers:
-Major revisions:
-Moderate fixes:
-Minor fixes:
-Evidence needed:
-Author decisions needed:
-Recommended next action:
+论文类型：
+核心问题：
+主要贡献：
+最有力的证据：
+最薄弱的证据：
+关键主张：
+目标读者或投稿载体：
+必须遵循的标准/检查清单：
 ```
 
-## Rule
+## 风险类别
 
-Do not write reassurance as review. If evidence is weak, say where and how it affects the manuscript.
+| 类别 | 审计问题 |
+| --- | --- |
+| 创新性 | 新意是什么？相对于什么对象而言？ |
+| 主张支持 | 每项主要主张是否都有直接证据？ |
+| 方法有效性 | 研究设计、抽样、分析和比较对象是否适当？ |
+| 可复现性 | 其他读者能否理解并重复关键步骤？ |
+| 统计与不确定性 | 是否清楚呈现了变异性、不确定性和局限性？ |
+| 图表 | 图件和表格是否在不造成歪曲的前提下支持主张？ |
+| 引用 | 主张是否得到一手来源或其他适当来源的支持？ |
+| 研究范围 | 稿件是否超出证据边界进行泛化？ |
+| 合规性 | 是否处理了伦理、数据与代码可用性、信息披露和报告规范等要求？ |
+| 写作 | 论文叙事是否清晰，同时没有掩盖薄弱之处？ |
+
+## 严重程度
+
+| 严重程度 | 含义 |
+| --- | --- |
+| `blocker`（阻断项） | 可能导致稿件无法投稿、送审或接收。 |
+| `major`（重大问题） | 很可能引起审稿人异议，需要修改或补充证据。 |
+| `moderate`（中等问题） | 重要的清晰度或证据支持问题。 |
+| `minor`（次要问题） | 局部措辞、格式或呈现问题。 |
+
+## 审计输出
+
+```text
+整体就绪程度：
+首要风险：
+所需证据：
+需要作者决定的事项：
+建议的下一步行动：
+```
+
+随后逐项输出可定位、可验收的问题表：
+
+| 问题ID | 严重程度 | 文件/章节/段落/图表位置 | 观察到的证据 | 对主张或投稿的影响 | 修复动作 | 验收条件 | 决策者/责任人 | 状态 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+
+位置优先记录文件名、章节、段落ID、句子开头、表号或图号；能稳定获得行号时再补行号。每项问题必须说明“看到了什么”和“为什么影响稿件”，不能只给抽象建议。状态使用 `open`、`blocked`、`resolved` 或 `not-applicable`；标记 `resolved` 时给出通过验收条件的证据。
+
+最后按 `blocker → major → moderate → minor` 汇总数量和修订顺序，但汇总不能替代逐项定位表。
+
+## 审计规则
+
+不得用安慰性话语冒充审稿意见。如果证据薄弱，应明确指出薄弱位置、观察证据、对哪项主张的影响和可检查的修复完成条件。无法定位到稿件内容的问题应标记为范围级问题并说明依据，不得编造位置。

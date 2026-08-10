@@ -1,68 +1,93 @@
-# Research Context Passport
+# 研究上下文护照
 
-Use this file to establish a reusable project ledger before writing, reviewing, searching deeply, or making claims.
+在开始写作、审阅、深入检索或提出主张之前，使用本文件建立可重复使用的项目台账。
 
-## Purpose
+## 目的
 
-The passport prevents a paper workflow from becoming a pile of polished but unsupported text. It records what the work is about, what evidence exists, what remains undecided, and what must not be assumed.
+研究上下文护照用于防止论文工作流变成一堆语言精致却缺少支持的文本。它记录研究内容、已有证据、尚未决定的事项以及绝不能擅自假定的信息。
 
-## Minimal Passport
+## 最小护照模板
 
 ```text
-Project title or working label:
-Research question:
-Intended contribution:
-Study object or system:
-Data/materials:
-Methods or intervention:
-Comparators or baselines:
-Evaluation criteria:
-Main claims:
-Evidence for each claim:
-Known boundaries:
-Missing inputs:
-Author decisions:
-Target venue status:
-Risks:
-Next safe action:
+项目标题或暂定名称：
+研究问题：
+预期贡献：
+研究对象或系统：
+数据/材料：
+方法或干预措施：
+比较对象或基线：
+评价标准：
+主要主张：
+各项主张对应的证据：
+已知边界：
+缺失的输入：
+需要作者决定的事项：
+目标投稿载体状态：
+风险：
+下一项安全行动：
 ```
 
-## Evidence Types
+## 证据类型
 
-Tag each item with one status:
+为每一项标记一种状态：
 
-| Status | Meaning |
+| 状态 | 含义 |
 | --- | --- |
-| `verified-artifact` | Checked in a file, source, log, table, figure, or code output. |
-| `user-provided` | Stated by the user but not independently verified in this turn. |
-| `literature-supported` | Supported by an identified source. |
-| `draft-only` | Present in draft text but not yet supported. |
-| `author-decision-needed` | Cannot be inferred by the agent. |
-| `missing` | Needed for a strong claim but unavailable. |
+| `verified-artifact`（材料已验证） | 已在文件、来源、日志、表格、图件或代码输出中核验。 |
+| `user-provided`（用户提供） | 由用户陈述，但本轮尚未独立核验。 |
+| `literature-supported`（文献支持） | 由已经识别的来源支持。 |
+| `draft-only`（仅见于草稿） | 已出现在草稿文本中，但尚无证据支持。 |
+| `author-decision-needed`（需要作者决定） | 智能体无法自行推断。 |
+| `missing`（缺失） | 强主张所必需，但目前不可获得。 |
 
-## Boundary Checks
+## 边界检查
 
-Always identify:
+始终明确以下内容：
 
-- population, system, material, corpus, task, or setting,
-- time range or data collection window,
-- inclusion/exclusion criteria,
-- units and transformations,
-- assumptions,
-- external validity limits,
-- whether the paper claims explanation, prediction, description, method, resource, or review.
+- 研究人群、系统、材料、语料库、任务或场景；
+- 时间范围或数据采集窗口；
+- 纳入与排除标准；
+- 单位和变换；
+- 假设条件；
+- 外部有效性的边界；
+- 论文提出的是解释、预测、描述、方法、资源还是综述性质的主张。
 
-## Decision Locks
+## 作者决定锁
 
-Do not infer:
+本节是整个 Skill 唯一的作者决定清单。其他模块只引用本节，不另造含义不同的清单。
 
-- author list or contribution order,
-- affiliations, funding, ethics, consent, or conflicts,
-- public release policy for data/code,
-- final target venue requirements,
-- formal response commitments to reviewers,
-- acceptability, safety, clinical, legal, or engineering conclusions beyond the provided evidence.
+### A. 写作中的科学选择
 
-## Output Use
+以下五项不得由 AI 静默替作者决定：
 
-For short tasks, include the passport inline. For longer projects, create or update a local Markdown ledger only when the user asks for a persistent artifact.
+1. **一句话主旨**：全文最终要回答或支持的中心命题。
+2. **创新与贡献的取舍和排序**：哪些属于核心贡献，哪些只是实现细节或辅助结果。
+3. **关键解释**：对主要发现采用哪一种解释，以及因果或机制措辞允许到什么强度。
+4. **局限性披露**：哪些真实失败条件、不确定性和受影响主张必须进入正文。
+5. **外推边界**：结论可以覆盖哪些对象、条件和场景，哪些仍未验证。
+
+任何一项尚未决定时标记 `author-decision-blocked`。作者在写作过程中确认某项选择后，记录决定、日期/轮次及适用稿件版本，并清除对应阻塞；这类确认是达到 `S2—S6` 的必要输入，但**不等于** `S7 作者确认锁定`。证据或全文结构发生实质变化时，受影响的科学选择重新打开。
+
+### B. 最终版本锁定
+
+只有作者审阅完整的 `S6` 稿件，并明确确认“以该确切版本的主旨、贡献、关键解释、局限和外推边界为准”，才能标记 `S7`。记录稿件版本、确认日期和锁定范围。早期提纲确认、局部段落确认或单项科学选择确认均不能替代最终版本锁定。
+
+### C. 行政、合规与外部行动决定
+
+以下事项同样不得自行推断或承诺：
+
+- 作者名单、署名顺序或贡献角色；
+- 作者单位、资助、伦理、知情同意或利益冲突信息；
+- 数据或代码的公开发布政策；
+- 目标投稿载体的最终要求；
+- 对审稿人的正式答复承诺；
+- 超出已有证据的可接受性、安全性、临床、法律或工程结论。
+
+### 决定台账
+
+| 决定ID | 类别 | 待决定事项 | 候选方案及证据 | 作者决定 | 适用版本 | 状态 | 确认日期/轮次 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+
+## 输出方式
+
+对于短任务，将研究上下文护照直接写入回复。对于较长项目，只有在用户要求保留持久化文档时，才创建或更新本地 Markdown 台账。

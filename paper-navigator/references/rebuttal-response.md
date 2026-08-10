@@ -1,64 +1,64 @@
-# Rebuttal and Response
+# 审稿意见答复
 
-Use this file only when the user provides real reviewer/editor comments or explicitly asks for a simulated response strategy.
+仅当用户提供了真实的审稿人或编辑意见，或明确要求模拟答复策略时，才使用本文件。
 
-## Inputs
+## 输入材料
 
 ```text
-editor decision:
-reviewer comments:
-manuscript version:
-available new evidence:
-changes already made:
-constraints:
-target response format:
+编辑决定：
+审稿意见：
+稿件版本：
+可用的新证据：
+已经完成的修改：
+约束条件：
+目标答复格式：
 ```
 
-If real comments are absent, do not invent them. Offer a simulated reviewer-risk exercise instead and label it clearly.
+如果没有真实意见，不得自行编造。可以改为开展模拟审稿风险演练，但必须清楚标明其模拟性质。
 
-## Comment Classification
+## 意见分类
 
-| Type | Meaning | Response priority |
+| 类型 | 含义 | 答复优先级 |
 | --- | --- | --- |
-| `decision-blocker` | Affects acceptability or core validity. | Highest |
-| `valid-major` | Correct criticism needing evidence, analysis, or substantial rewrite. | High |
-| `clarity` | Misunderstanding caused by manuscript presentation. | Medium |
-| `scope-mismatch` | Reviewer asks for work outside the paper's justified scope. | Medium |
-| `minor` | Formatting, wording, small citation, local explanation. | Low |
-| `conflict` | Reviewer comments contradict each other or the editor. | Needs careful handling |
+| `decision-blocker`（决定性障碍） | 影响稿件可接受性或核心有效性。 | 最高 |
+| `valid-major`（成立的重大意见） | 批评成立，需要补充证据、分析或进行大幅重写。 | 高 |
+| `clarity`（清晰度问题） | 稿件表述造成了误解。 | 中 |
+| `scope-mismatch`（范围不匹配） | 审稿人要求的工作超出了论文有证据支持的合理范围。 | 中 |
+| `minor`（次要意见） | 涉及格式、措辞、少量引用或局部解释。 | 低 |
+| `conflict`（意见冲突） | 审稿意见之间相互矛盾，或与编辑意见冲突。 | 需要谨慎处理 |
 
-## Response Structure
+## 单条意见的答复结构
 
-For each comment:
+针对每条意见，使用以下结构：
 
 ```text
-Comment:
-Classification:
-Decision impact:
-Author stance:
-Action taken or proposed:
-Evidence:
-Manuscript change location:
-Draft response:
-Remaining risk:
+审稿意见：
+分类：
+对编辑决定的影响：
+作者立场：
+已经采取或拟采取的行动：
+证据：
+稿件修改位置：
+答复草稿：
+剩余风险：
 ```
 
-## Tone
+## 语气
 
-- Be respectful and specific.
-- Acknowledge valid criticism without overstating fault.
-- Say what changed and where.
-- Use evidence, not persuasion alone.
-- Do not promise experiments, analyses, data release, or claims the authors cannot support.
-- When disagreeing, narrow the disagreement and provide evidence or scope rationale.
+- 保持尊重，并具体作答。
+- 承认成立的批评，但不要夸大作者的过错。
+- 明确说明修改了什么以及修改位置。
+- 以证据为依据，不能只靠说服性语言。
+- 不得承诺作者无法支持的实验、分析、数据公开或主张。
+- 如果不同意审稿意见，应缩小分歧范围，并提供证据或研究范围方面的理由。
 
-## Revision Log
+## 修改日志
 
-Maintain a compact log:
+维护一份简洁日志：
 
-| Comment ID | Change made | File/section | Evidence | Status |
+| 意见编号 | 已完成的修改 | 文件/章节 | 证据 | 状态 |
 | --- | --- | --- | --- | --- |
 
-## Gates
+## 确认质量门
 
-Formal response letters, author commitments, and final claims require user confirmation. If the user has not approved the strategy, provide a draft and mark it as not final.
+正式答复信、作者承诺和最终主张都需要用户确认。如果用户尚未批准答复策略，应只提供草稿，并将其标记为“非最终版本”。

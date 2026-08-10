@@ -1,73 +1,73 @@
-# Figure Planning and Visual QA
+# 图件规划与视觉质量检查
 
-Use this file for planning, creating, reviewing, or captioning academic figures.
+规划、制作、审查学术图件或撰写图注时，使用本文件。
 
-## Figure Contract
+## 图件契约
 
-Before choosing a chart, define:
+选择图表类型前，先定义：
 
 ```text
-figure_id:
-claim_or_question:
-audience:
-data/material:
-variables:
-comparison:
-required annotation:
-target size or venue constraints:
-caption message:
+图件编号：
+主张或问题：
+目标读者：
+数据/材料：
+变量：
+比较关系：
+必需标注：
+目标尺寸或发表载体限制：
+图注要传达的信息：
 ```
 
-If the claim is unclear, propose a figure contract before plotting.
+如果主张尚不明确，应先提出图件契约，再开始绘图。
 
-## Chart Selection
+## 图表类型选择
 
-| Goal | Prefer | Avoid |
+| 目标 | 优先选择 | 避免使用 |
 | --- | --- | --- |
-| Show relationship | scatter, line with uncertainty, model fit with residuals | decorative 3D, unlabelled trend lines |
-| Compare groups | dot/strip, box, violin, interval plot, table if few values | mean-only bars for small samples |
-| Show change over ordered variable | line, slopegraph, heatmap for dense grids | connecting unordered categories |
-| Show composition | stacked bar or table when categories are few | pie charts for precise comparison |
-| Show method/workflow | clean schematic with inputs, process, outputs, evidence links | ornamental diagrams with no claim |
-| Show uncertainty | confidence/credible intervals, bootstrap bands, distribution plots | hiding variance behind single numbers |
+| 展示变量关系 | 散点图、带不确定性区间的折线图、带残差的模型拟合图 | 装饰性三维图、无标签的趋势线 |
+| 比较不同组别 | 点图/条带图、箱线图、小提琴图、区间图；数值较少时使用表格 | 小样本下只展示均值的柱状图 |
+| 展示有序变量的变化 | 折线图、斜率图；密集网格数据使用热图 | 将无序类别连接成线 |
+| 展示组成 | 类别较少时使用堆叠柱状图或表格 | 使用饼图进行精确比较 |
+| 展示方法或工作流程 | 清晰标出输入、过程、输出和证据连接的示意图 | 不承载任何主张的装饰性图示 |
+| 展示不确定性 | 置信区间/可信区间、自助法区间带、分布图 | 用单一数值掩盖变异性 |
 
-## Caption Structure
+## 图注结构
 
 ```text
-Panel or figure purpose:
-Data/material scope:
-Encoding:
-Key observation:
-Statistical or measurement note:
-Boundary:
+分图或整幅图的目的：
+数据/材料范围：
+视觉编码方式：
+关键观察：
+统计或测量说明：
+边界：
 ```
 
-Do not let a caption claim more than the figure and underlying evidence show.
+图注中的主张不得超出图件及其底层证据实际能够展示的范围。
 
-## Visual QA
+## 视觉质量检查
 
-Check before calling a figure ready:
+将图件判定为就绪前，检查：
 
-- text legible at target size,
-- axes labelled with units where applicable,
-- legend clear and not overlapping,
-- colors distinguishable and grayscale-tolerant when needed,
-- annotations do not hide data,
-- panel labels consistent,
-- values match source table,
-- uncertainty/statistics described,
-- file format and resolution suitable for the next use,
-- caption matches the actual visual.
+- 文字在目标尺寸下清晰可读；
+- 坐标轴在适用时标有单位；
+- 图例清晰且不相互重叠；
+- 颜色能够区分，并在需要时兼容灰度显示；
+- 标注没有遮挡数据；
+- 各分图标签一致；
+- 图中数值与源数据表一致；
+- 已说明不确定性或统计信息；
+- 文件格式和分辨率适合下一步用途；
+- 图注与实际图件一致。
 
-## Review Output
+## 审查输出格式
 
 ```text
-Figure:
-Claim served:
-Chart choice:
-Strengths:
-Issues:
-Required fixes:
-Caption risk:
-Ready status:
+图件：
+所服务的主张：
+图表类型选择：
+优点：
+问题：
+必须修改项：
+图注风险：
+就绪状态：
 ```

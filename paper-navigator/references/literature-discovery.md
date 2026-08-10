@@ -1,69 +1,79 @@
-# Literature Discovery
+# 文献发现
 
-Use this file for literature searches, related-work planning, evidence discovery, and reproducible search logs.
+进行文献检索、相关工作规划、证据发现或记录可复现的检索过程时，请使用本文件。
 
-## Search Depth Tiers
+## 检索深度分级
 
-| Tier | Use when | Output |
+| 级别 | 适用情形 | 输出 |
 | --- | --- | --- |
-| `quick` | User needs orientation or a few seed sources. | 5-10 candidate sources plus query notes. |
-| `standard` | User is preparing related work or background. | Search strategy, candidate table, screening notes. |
-| `deep` | User needs broad coverage or a defensible review base. | Multi-source search log, inclusion logic, method clusters. |
-| `audit` | User must justify completeness or verify citation support. | Reproducible query ledger, excluded sources, uncertainty list. |
+| `quick`（快速） | 用户需要快速了解方向或获得少量种子文献。 | 5–10 条候选来源及检索说明。 |
+| `standard`（标准） | 用户正在准备相关工作或研究背景。 | 检索策略、候选文献表和筛选说明。 |
+| `deep`（深入） | 用户需要较广的覆盖范围或可经受质询的综述基础。 | 多来源检索日志、纳入逻辑和方法类别聚类。 |
+| `audit`（审计） | 用户需要说明检索完整性或核验引用支持关系。 | 可复现的检索台账、排除来源和不确定事项清单。 |
 
-Ask before starting long network-heavy searches. If browsing is required, follow the active web-access rules and prioritize primary sources.
+开始耗时较长且大量依赖网络的检索之前，应先询问用户。如果需要联网浏览，遵循当前生效的 `web-access` 规则，并优先使用一手来源。
 
-## Query Planning
+## 检索式规划
 
-Create query families rather than one query:
-
-```text
-core concept:
-method terms:
-application/context terms:
-outcome terms:
-synonyms:
-negative terms:
-date range:
-source types:
-```
-
-## Candidate Table
-
-Use this structure unless the user requests another format:
-
-| ID | Source | Year | Type | Why it matters | Evidence target | Access/status | Notes |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-
-`Evidence target` should say what the source might support: background, method, dataset, metric, mechanism, limitation, or competing claim.
-
-## Search Log
-
-Record enough detail to reproduce the search:
+应构建一组检索式，而不是只使用一个检索式：
 
 ```text
-date:
-source/database:
-query:
-filters:
-results inspected:
-included:
-excluded:
-reason for stopping:
+核心概念：
+方法术语：
+应用或情境术语：
+结果术语：
+同义词：
+排除词：
+日期范围：
+来源类型：
 ```
 
-## Screening Rules
+## 候选文献表
 
-- Prefer primary papers, official datasets, standards, and source documentation.
-- Mark reviews as background unless they directly support a review-style statement.
-- Do not treat a title or abstract match as enough support for a specific claim.
-- Keep negative or conflicting evidence visible.
-- Separate "found" from "read" and "read" from "supports this claim".
+除非用户要求其他格式，否则使用以下结构：
 
-## Handoff
+| 编号 | 来源 | 年份 | 类型 | 相关性说明 | 目标证据 | 元数据状态 | 获取路线 | 路线状态 | PDF核验状态 | 备注 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
-After discovery, route to:
+“目标证据”应说明该来源可能支持的内容，例如研究背景、方法、数据集、指标、机制、局限性或竞争性主张。此字段只是检索目标，不表示来源已经支持该主张。
 
-- `paper-reading.md` for close reading,
-- `citation-support.md` for claim-level support,
-- `writing-claim-evidence.md` for related-work synthesis.
+准确分开记录四种真值：
+
+- **元数据状态**：`discovered` 或 `metadata verified`。
+- **获取路线**：与 `fulltext-access.md` 一致，使用 `OA-publisher`、`OA-repository`、`author-archive`、`institution-authorized`、`user-provided-local`、`document-delivery` 或 `not-found`。
+- **路线状态**：与 `fulltext-access.md` 一致，使用 `not-attempted`、`route-found`、`auth_required`、`acquired`、`blocked`、`unsupported` 或 `missing`。
+- **PDF核验状态**：`not-checked`、`verification-failed` 或 `PDF verified`。只有通过 `fulltext-access.md` 的完整 PDF 验证质量门才能标记 `PDF verified`。
+
+不得把 DOI 解析页面、摘要页面、出版社落地页、元数据响应、已找到链接或已经打开的 PDF 查看器标记为 `PDF verified`。
+
+## 检索日志
+
+记录足以复现检索过程的信息：
+
+```text
+日期：
+来源/数据库：
+检索式：
+筛选条件：
+已检查结果：
+纳入项：
+排除项：
+停止检索的理由：
+```
+
+## 筛选规则
+
+- 优先选择原始论文、官方数据集、标准和源文档。
+- 除非综述能够直接支持综述性质的陈述，否则将其标记为背景来源。
+- 不得把标题或摘要匹配视为足以支持具体主张的证据。
+- 保留并明确呈现负面证据或相互冲突的证据。
+- 严格区分“已发现”“已阅读”和“能够支持该主张”三种状态。
+
+## 后续交接
+
+完成文献发现后，按需转入：
+
+- `fulltext-access.md`：为筛选纳入但尚无全文的来源合法获取全文；
+- `paper-reading.md`：精读论文；
+- `citation-support.md`：提供主张级证据支持；
+- `writing-claim-evidence.md`：综合撰写相关工作。

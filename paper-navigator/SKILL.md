@@ -1,146 +1,184 @@
 ---
 name: paper-navigator
-description: Use when planning, organizing, auditing, writing, reviewing, citing, visualizing, or revising academic research papers across disciplines. Trigger for literature discovery, paper reading, experiment/result provenance, claim-evidence mapping, manuscript sections, publication figures, citation support, pre-submission review, reviewer-style critique, revision planning, rebuttal drafting, research workflow orchestration, or evidence-grounded academic notes.
+description: 面向跨学科科研论文的中文优先导航、写作定稿与质量控制 Skill。用于研究主题与主旨梳理、文献检索、合法全文获取、论文精读、数据和实验结果溯源、主张—证据—边界映射、技术路线与图表规划、接收已确认的目标期刊写作合同、中文摘要/引言/相关工作/方法/结果/讨论/结论写作、逐段反向提纲、跨章节一致性检查、引用核验、投稿前审查、修改计划和审稿回复。默认深入支持工程、实验、数值模拟和方法类研究论文；综述与纯理论论文先分流并建立专用结构。触发词包括论文写作、中文定稿、目标期刊合同、写摘要、写引言、写方法、写结果、写讨论、写结论、润色论文、检查论文逻辑、文献综述、论文审稿、回复审稿人等。
 ---
 
-# Paper Navigator
+# 论文导航与中文定稿（paper-navigator）
 
-Use this skill as a generic router and quality-control layer for academic paper work. It does not replace domain expertise or author decisions. It turns a research request into the smallest evidence-grounded artifact that can safely move the paper forward.
+将本 Skill 用作科研论文工作的中文优先路由器和质量控制层。默认先完成可信、完整、可核验的中文文字定稿，再把英文转换、目标期刊表达适配和正式投稿材料交给相应的独立 Skill。
 
-## Core Principles
+## 默认范围
 
-- Put evidence before prose. Do not write strong claims without support from data, figures, code results, source text, or credible literature.
-- Make boundaries explicit. State the study object, population or system, conditions, units, assumptions, scope, and extrapolation limits.
-- Preserve provenance. Track where data, results, figures, citations, drafts, reviewer comments, and author decisions came from.
-- Align figures with claims. Every figure should answer a specific research question or support a specific claim.
-- Cite at claim level. Use citations to support exact statements, not broad topic similarity.
-- Separate drafting from verification. A polished sentence is still unsafe if the evidence chain is weak.
-- Route lightly, read narrowly. Use this `SKILL.md` for routing and gates; read only the reference files needed for the current task.
-- Keep the skill general. Do not inherit field-specific examples, model names, datasets, journals, or manuscript details unless the user provides them for the current task.
+- 深入支持工程、实验、数值模拟和方法类研究论文。
+- 遇到综述或纯理论论文时，读取 `references/paper-type-structures.md`，先建立论文类型专用结构再写，不要强套技术路线图或实验结果模板。
+- 保留作者决策权。研究主旨、创新点排序、关键解释、局限性和外推边界必须由作者确认；唯一清单和“科学选择/最终锁定”的区别见 `references/research-context-passport.md`。
+- 不以英文表达反推中文内容。先稳定中文命题、证据和逻辑，再进行英文转换。
 
-## Quick Routing
+## 核心原则
 
-First identify the user's desired artifact, then read the smallest relevant reference:
+- **证据先于文字。** 没有数据、图表、代码结果、来源文本或可靠文献支持时，不写强结论。
+- **一段一义。** 每段只承担一个主要任务，并有主题句和证据或解释锚点。
+- **边界必须显式。** 写清研究对象、条件、单位、假设、适用范围和外推限制。
+- **保留来源链。** 记录数据、结果、图表、引用、草稿和作者决策来自哪里。
+- **图表服务主张。** 每幅图必须回答一个问题或支撑一个主张。
+- **引用支撑原子主张。** 不用主题相似或标题相似代替真实支持。
+- **写作与核验分开。** 语言顺畅不代表证据已经通过。
+- **局部修订优先。** 用户只指出局部问题时，不擅自重写已确认的其他段落。
+- **轻路由、窄读取。** 主入口只负责选择模块；每次只读取当前任务需要的参考文件。
 
-| User intent | Read |
+## 快速路由
+
+先识别用户需要的产物，再读取最小必要参考文件：
+
+| 用户意图 | 读取文件 |
 | --- | --- |
-| Unsure where to start, coordinate a paper workflow, choose the next safe action | `references/module-routing.md` |
-| Define the project, evidence inventory, boundaries, and author decisions | `references/research-context-passport.md` |
-| Find literature, build a search strategy, compare search depth, log reproducible queries | `references/literature-discovery.md` |
-| Read papers, extract methods/results/figures, build source-grounded reading cards | `references/paper-reading.md` |
-| Audit data, code, experiments, results, metrics, or computational provenance | `references/experiment-provenance.md` |
-| Plan or review publication figures, chart types, captions, and visual QA | `references/figure-planning-qa.md` |
-| Draft or revise manuscript sections with claim-evidence-boundary discipline | `references/writing-claim-evidence.md` |
-| Add or audit citations, grade support, prepare reference metadata | `references/citation-support.md` |
-| Run pre-submission review, reviewer-style critique, or revision triage | `references/review-risk-audit.md` |
-| Classify reviewer/editor comments and draft response or rebuttal materials | `references/rebuttal-response.md` |
+| 不知道从哪里开始、协调完整论文流程、选择下一步 | `references/module-routing.md` |
+| 判断综述、纯理论或技术路线类论文的专用结构 | `references/paper-type-structures.md` |
+| 建立项目边界、证据清单和作者决策台账 | `references/research-context-passport.md` |
+| 检索文献、设计检索式、建立可复现检索日志 | `references/literature-discovery.md` |
+| 从 DOI 或候选表合法获取全文并核验 PDF | `references/fulltext-access.md` |
+| 精读论文、提取方法/结果/图表、建立阅读卡 | `references/paper-reading.md` |
+| 审计数据、代码、实验、指标和结果来源 | `references/experiment-provenance.md` |
+| 规划或检查论文图表、图注和视觉质量 | `references/figure-planning-qa.md` |
+| 接收已确认的目标期刊写作合同、核验版本或处理期刊变化 | `references/journal-contract-intake.md` |
+| 从研究材料推进整篇中文论文定稿 | `references/manuscript-finalization-workflow.md`、`references/writing-claim-evidence.md`、`references/manuscript-status-quality-gates.md` |
+| 起草或修改任一中文章节 | `references/chinese-writing-rules.md`、`references/writing-claim-evidence.md`，再按章节读取下列文件 |
+| 写标题、关键词、摘要、引言或相关工作 | `references/section-abstract-introduction-related-work.md` |
+| 写方法、实验设计、结果或结果分析 | `references/section-methods-results.md` |
+| 写讨论、局限性、结论或未来工作 | `references/section-discussion-conclusion.md` |
+| 检查段落逻辑、运行反向提纲或跨章节一致性 | `references/reverse-outline-consistency.md` |
+| 添加、核验或分级引用 | `references/citation-support.md` |
+| 投稿前审查、模拟审稿或制定修改优先级 | `references/review-risk-audit.md` |
+| 分类真实审稿意见并起草回复 | `references/rebuttal-response.md` |
 
-For multi-stage requests, default to:
+多阶段研究任务默认路由为：
 
-`context -> literature -> reading -> provenance -> figures -> writing -> citation -> review -> rebuttal`
+`研究边界 → 文献 → 合法全文 → 阅读 → 结果溯源 → 图表 → 中文写作定稿 → 引用 → 投稿前审查 → 审稿回复`
 
-Skip stages that are irrelevant or already complete. If the user asks for a concrete artifact, enter that module directly and list any missing evidence instead of restarting the whole pipeline.
+跳过已经完成或与任务无关的环节。用户要求具体产物时直接进入相应模块，并列出缺失证据；不要强迫用户从头重走流程。
 
-## Default Input Check
+## 中文文字定稿主线
 
-Before producing conclusions, try to identify:
+整篇论文默认执行以下19步，详细输入、产物和通过条件见 `references/manuscript-finalization-workflow.md`：
 
-- Research question and intended contribution.
-- Study object, data source, population, system, setting, or corpus.
-- Materials provided by the user: papers, PDFs, notes, data files, code, logs, figures, tables, drafts, comments, or target venue instructions.
-- Evidence status: verified result, draft result, literature claim, author decision, reviewer claim, or missing source.
-- Current stage: search, read, experiment, figure, write, cite, review, revise, rebut.
-- Desired output: table, reading card, provenance ledger, figure plan, paragraph draft, citation map, risk review, response letter, or next-step plan.
+`主题/问题/边界 → 材料与结果盘点 → 一句话主旨 → 有证据的创新与贡献 → 全文结构与主张地图 → 技术路线 → 引言第0版 → 方法 → 结果 → 讨论 → 结论 → 相关工作/背景 → 最终引言 → 摘要/标题/关键词 → 逐节反向提纲 → 跨章节一致性 → 中文质量门 → 中文文字定稿 → 英文转换/期刊适配/投稿交接`
 
-If core inputs are missing, do not invent them. Produce a scaffold with explicit gaps or ask the user only when continuing would fabricate evidence or commit to an author-level decision.
+不要把“有一版文字”“语言润色完成”“通过部分检查”“已转成英文”混称为中文文字定稿。
 
-## Confirmation Gates
+## 默认输入检查
 
-Proceed with safe analysis, scaffolding, and auditing by default. Pause for explicit confirmation before actions that change evidence, policy, or shared state:
+开始形成结论或正式文字前，尽量识别：
 
-- `target venue`: final formatting, word limits, reference style, figure limits, reporting checklists, or required disclosures.
-- `validation route`: new experiments, new data collection, new splits, re-analysis, statistical tests, sensitivity analysis, or metric recomputation.
-- `data/code availability`: public release, repository creation, license, restricted access, embargo, or supplemental package contents.
-- `author declarations`: author list, affiliations, funding, acknowledgements, conflict of interest, ethics, consent, CRediT, or AI/tool disclosure.
-- `reviewer/editor comments`: formal response letters, rebuttal matrices, or revision commitments based on real editorial material.
-- `global skill installation`: installing, overwriting, migrating, or publishing this skill outside the current working copy.
+- 研究问题、论文类型和预期贡献。
+- 研究对象、系统、材料、数据、工况、样本或语料范围。
+- 用户提供的论文、PDF、笔记、数据、代码、日志、图表、草稿、审稿意见或期刊要求。
+- 证据状态：已核验结果、用户陈述、文献支持、草稿主张、待作者决定或缺失。
+- 当前阶段和所需产物。
+- 目标读者、目标期刊状态和篇幅要求；未确定时使用通用中文学术写作规则，不猜期刊要求。
 
-When a gate is triggered, output:
+核心输入缺失时，不要虚构。输出带显式缺口的脚手架；只有继续工作会造成证据造假或替作者做关键决定时才暂停提问。
 
-```text
-Gate:
-Decision needed:
-Safe work I can do now:
-Risk if assumed:
-```
+## 目标期刊合同入口
 
-## Research Ledger
+- 目标期刊未定时保留 `venue-unselected`，继续形成通用中文稿；该标记不阻塞通用中文 `S6/S7`，但阻塞任何目标期刊适配声明。只有在 `$paperline` 中经作者明确授权跳过 P2 时，才把顶层旁路状态写为 `venue-pending`。
+- 收到上游 `target-journal-writing-contract.md` 时，读取 `references/journal-contract-intake.md`，只接受状态为 `confirmed`、阻塞项为空且稿件、合同与证据版本明确的合同。
+- 记录合同版本、证据版本和适用稿件版本。不要把候选期刊、推荐结果、期刊决定文件或未确认画像当成已确认写作合同。
+- 目标期刊或合同版本变化时，仅使受影响章节和期刊适配层回退到相应状态；保留仍然有效的通用中文正文、证据核验和来源链。
+- 不复制或假定 `$journal-navigator` 的实现，也不承诺该 Skill 已安装；只按实际收到的合同产物工作。
 
-For substantial tasks, maintain a compact ledger in the answer or output file:
+## 写作对齐门
 
-```text
-Research task:
-Current stage:
-Artifacts checked:
-Main claim:
-Evidence:
-Boundary:
-Missing inputs:
-Risks:
-Next safe action:
-```
-
-For writing, review, or rebuttal tasks, always include `Main claim`, `Evidence`, `Boundary`, and `Risks`.
-
-## Multi-Agent Protocol
-
-Use read-only multi-agent work when the task contains independent material that can be reviewed in parallel, such as many papers, several datasets, multiple figure panels, or different reviewer perspectives.
-
-Suitable uses:
-
-- Multiple independent literature sources or databases.
-- Several PDFs or long documents that need reading cards.
-- Independent provenance checks over data, code, results, and figures.
-- Pre-submission review from different perspectives: domain, method, statistics, writing, citation, and editorial risk.
-
-Avoid multi-agent work when:
-
-- The task is a small single-file edit.
-- Later work depends on earlier results.
-- Multiple agents would write the same file or mutate the same artifact.
-
-Require subagents to return structured output:
+在完整章节或大幅重写前，如果主旨、核心贡献、首要结果、边界或段落结构仍有实质歧义，先给出：
 
 ```text
-agent_role:
-scope:
-inputs_checked:
-findings:
-evidence:
-uncertainties:
-conflicts:
-recommended_action:
-sources_or_files:
+一句话主旨：
+本节任务：
+段落蓝图：
+关键证据：
+锁定术语：
+关键假设：
+需要作者确认的问题：
 ```
 
-The main agent must merge only verified evidence, abstract rules, and source anchors. Mark conflicts as `needs manual check` instead of silently choosing a side.
+问题最多保留2—3个高影响项。用户确认后，继续执行已经授权的机械写作、核验和局部修订，不要对同一决策反复询问。
 
-## Output Defaults
+## 确认边界
 
-Use the user's language unless the requested artifact has a different target language. For academic prose, distinguish:
+安全的只读分析、脚手架和审计可以直接进行。以下事项必须先获得明确确认：
 
-- Draft text that can be edited into a manuscript.
-- Evidence notes that should not be pasted into the manuscript.
-- Missing evidence that blocks a strong claim.
-- Author decisions that require confirmation.
+- 一句话主旨、创新与贡献的取舍和排序、关键解释、真实局限的披露方式及外推边界；写作中确认这些科学选择只解除 `author-decision-blocked`，不等于对最终版本作出 `S7` 锁定。
+- 最终期刊格式、篇幅、参考文献样式、图表限制、报告规范或披露要求。
+- 新实验、新数据收集、新划分、重分析、统计检验、敏感性分析或指标重算。
+- 数据/代码公开、许可证、仓库创建、受限访问、禁运或补充材料范围。
+- 作者、单位、基金、致谢、利益冲突、伦理、知情同意、CRediT 或 AI 使用声明。
+- 基于真实编辑/审稿材料做出的正式回复和修改承诺。
+- 安装、覆盖、迁移或发布工作区之外的 Skill。
 
-Prefer tables for comparisons, ledgers for provenance, and short next-step lists for workflow routing.
+触发确认边界时使用：
 
-## Quality Floor
+```text
+确认边界：
+需要决定：
+现在可以安全完成：
+如果擅自假设的风险：
+```
 
-- Do not fabricate results, citations, DOI, source text, reviewer comments, author decisions, or journal rules.
-- Do not use title relevance as citation support.
-- Do not smooth over weak evidence with confident language.
-- Do not let target-journal style override evidence boundaries.
-- Do not copy upstream skill text, copyrighted templates, figures, captions, or reviewer responses; abstract workflow ideas and write original guidance.
-- Do not install, publish, or overwrite global skill locations unless the user explicitly confirms that action.
+## 研究台账
+
+较大任务中，在回复或产物内维护紧凑台账：
+
+```text
+研究任务：
+当前阶段：
+已检查材料：
+核心主张：
+证据：
+适用边界：
+缺失输入：
+风险：
+下一项安全动作：
+```
+
+写作、审查和回复任务至少保留“核心主张、证据、适用边界、风险”。
+
+## 可选的并行协作
+
+只有多个材料可以独立只读检查时才使用并行协作，例如多篇论文、多组数据、多个图版或不同审稿视角。不得把多智能体作为写作的强制依赖，也不得让多个执行者同时改同一篇正文。
+
+并行任务统一返回：
+
+```text
+角色：
+检查范围：
+输入材料：
+发现：
+证据：
+不确定性：
+冲突：
+建议动作：
+来源或文件：
+```
+
+主执行者只合并已核验证据、抽象规则和来源锚点；冲突标记为“需人工核对”，不能静默选边。
+
+## 输出默认值
+
+- 默认使用中文。达到 `S6` 时，本 Skill 可以生成“待作者锁定”的交接包，但不得启动英译；作者审阅确切版本并标记 `S7` 后，生成正式交接包并停止。只有另行加载 `$zh-en-paper-translator` 或用户指定的英文转换 Skill 后才能继续英文转换或期刊文风适配。
+- 在正式 `paperline` 全稿交接包中记录中文稿 ID、修订号、SHA-256、作者锁定记录、术语/数字/引用/边界台账，以及目标期刊决策、合同和两类证据标识；不得把旧合同附到新稿或把新合同反向标记为已由作者锁定。
+- 区分可进入论文的正文、不能直接粘贴的证据备注、阻塞强主张的缺失证据和必须确认的作者决策。
+- 比较优先用表格，来源关系优先用台账，流程选择优先用短清单。
+- 章节内部可以使用 `【定】【问】【主】【法】【据】【比】【释】【界】【转】` 规划句子功能，但交付的论文正文必须删除这些标签。
+- AI 最多判定达到 `S6 中文文字定稿`；只有作者明确确认后才标记 `S7 作者确认锁定`。
+
+## 最低质量要求
+
+- 不得虚构结果、引用、DOI、来源原文、审稿意见、作者决策或期刊规则。
+- 不得把候选记录、DOI 解析、出版社页面或元数据响应混称为已经下载并核验的 PDF。
+- 只使用合法开放获取或用户授权的机构访问；不得绕过付费墙、认证、验证码或出版社控制。
+- 不得用标题相关性代替引用支持。
+- 不得用流畅语言掩盖薄弱证据。
+- 不得让目标期刊风格覆盖证据边界。
+- 不得在 `paper-navigator` 内口头承诺随后直接英译或模仿期刊文风；必须明确生成交接包并路由到独立 Skill。
+- 不得把局部评分抵消证据、数据或作者确认方面的阻塞项。
+- 不得复制上游 Skill 的长文本、模板、图表、标题或示例；只抽象工作流机制并编写原创中文规则。
+- 未经明确确认，不得安装、发布或覆盖全局 Skill。

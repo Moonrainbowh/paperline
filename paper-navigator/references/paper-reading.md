@@ -1,71 +1,75 @@
-# Paper Reading
+# 论文阅读
 
-Use this file when reading PDFs, papers, preprints, reports, standards, or source documents.
+阅读 PDF、论文、预印本、报告、标准或源文档时，使用本文件。
 
-## Reading Goals
+## 阅读目标
 
-Before reading, identify whether the user needs:
+开始阅读前，先判断用户需要的是：
 
-- a quick summary,
-- a source-grounded reading card,
-- method extraction,
-- figure/table interpretation,
-- claim support,
-- comparison against the user's project,
-- limitations and risks.
+- 快速概述；
+- 有来源依据的阅读卡片；
+- 方法提取；
+- 图表解读；
+- 主张支持分析；
+- 与用户项目的比较；
+- 局限性与风险分析。
 
-## Reading Card
-
-```text
-Source:
-Bibliographic status:
-Research question:
-Study design:
-Data/materials:
-Methods:
-Comparators:
-Metrics or evaluation:
-Key results:
-Figures/tables worth noting:
-Claims this source can support:
-Claims this source cannot support:
-Limitations:
-Reproducibility notes:
-Useful citation contexts:
-Open questions:
-```
-
-## Source Anchors
-
-When possible, record page, section, table, figure, equation, or paragraph anchors. Do not quote long passages. Paraphrase and keep exact quotes short only when needed.
-
-## Figure and Table Reading
-
-For each important figure/table:
+## 阅读卡片
 
 ```text
-figure_or_table:
-what it shows:
-variables:
-comparison:
-main pattern:
-what it supports:
-what it does not prove:
-visual or reporting issues:
+来源：
+文献著录状态：
+访问/阅读状态：metadata-only / abstract-read / fulltext-read / exact-source-passage-provided
+研究问题：
+研究设计：
+数据/材料：
+方法：
+比较对象：
+指标或评价方式：
+关键结果：
+值得关注的图/表：
+该来源能够支持的主张：
+各项支持主张的来源锚点：
+该来源不能支持的主张：
+局限性：
+可复现性说明：
+适合引用的语境：
+未决问题：
 ```
 
-## Support Discipline
+## 来源锚点
 
-Classify source support:
+凡要判定来源能够直接或部分支持论文主张，必须记录页码、章节、表格、图件、公式、标准条款或段落等正文锚点。文档没有稳定页码时，记录章节标题与段落开头、图表编号或其他可唯一复查的位置。缺少正文锚点时，只能标记候选或背景，不得输出 `direct`/`partial`。
 
-- `direct`: the source directly tests or states the claim.
-- `partial`: it supports part of the claim or a related setting.
-- `background`: useful context but not evidence for the specific claim.
-- `conflict`: contradicts or complicates the claim.
-- `not-supporting`: topic-related but not usable for the claim.
+不要引用长段原文；应采用释义转述，仅在确有必要时保留简短的准确引文。只读过标题或摘要必须显式标记为 `metadata-only` 或 `abstract-read`，不能据此支持具体方法、数值、机制、局限或比较主张。
 
-## Handoff
+## 图表阅读
 
-- For citation placement, route to `citation-support.md`.
-- For synthesis into manuscript text, route to `writing-claim-evidence.md`.
-- For reviewer risk, route to `review-risk-audit.md`.
+对于每个重要图件或表格，记录：
+
+```text
+图件或表格：
+展示内容：
+变量：
+比较关系：
+主要模式：
+能够支持什么：
+不能证明什么：
+视觉呈现或报告问题：
+```
+
+## 支持判定纪律
+
+按以下代码判定来源的支持程度：
+
+- `direct`（直接支持）：已检查的来源正文在记录锚点直接检验或明确陈述该主张。
+- `partial`（部分支持）：已检查的来源正文在记录锚点支持该主张的一部分，或支持相关情境下的结论。
+- `background`（背景支持）：可用于提供背景，但不能作为具体主张的证据。
+- `conflict`（冲突）：来源与该主张矛盾，或表明该主张比当前表述更复杂。
+- `not-supporting`（不支持）：与主题相关，但不能用于支持该主张。
+
+## 后续路由
+
+- 需要确定引用插入位置时，转至 `citation-support.md`。
+- 需要将来源内容综合写入论文正文时，转至 `writing-claim-evidence.md`。
+- 需要评估审稿风险时，转至 `review-risk-audit.md`。

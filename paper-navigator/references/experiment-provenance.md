@@ -1,66 +1,66 @@
-# Experiment and Result Provenance
+# 实验与结果溯源
 
-Use this file for computational experiments, empirical studies, statistical analyses, benchmarks, data processing, and result audits.
+开展计算实验、实证研究、统计分析、基准测试、数据处理或结果审计时，使用本文件。
 
-## Provenance Goal
+## 溯源目标
 
-The goal is not to make results look better. The goal is to know exactly what produced each result and what claims it can safely support.
+溯源不是为了让结果看起来更好，而是为了准确查明每项结果由什么产生，以及它能够安全支持哪些主张。
 
-## Artifact Inventory
+## 研究产物清单
 
 ```text
-data/material files:
-raw source:
-processed source:
-code/scripts:
-configuration:
-environment:
-randomness or sampling:
-run logs:
-result tables:
-figures:
-model/checkpoint/output files:
-notes or decisions:
+数据/材料文件：
+原始来源：
+处理后来源：
+代码/脚本：
+配置：
+运行环境：
+随机性或抽样方式：
+运行日志：
+结果表：
+图件：
+模型/检查点/输出文件：
+记录或决策：
 ```
 
-## Result Ledger
+## 结果台账
 
-| Result | Artifact | Method/config | Data/material scope | Metric or outcome | Verified? | Claim supported | Boundary |
+| 结果 | 对应产物 | 方法/配置 | 数据/材料范围 | 指标或结果表现 | 是否已核验 | 所支持的主张 | 边界 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 
-## Checks
+## 核验项目
 
-- Confirm source files exist before citing them as evidence.
-- Compare hashes, row counts, sample counts, or document counts when multiple directories claim to contain the same data.
-- Record preprocessing and exclusions.
-- Separate training, selection, validation, and final evaluation where relevant.
-- Keep failed, null, or negative results visible when they affect interpretation.
-- Check whether reported metrics match the plotted or tabulated values.
-- Identify whether results are descriptive, predictive, causal, mechanistic, diagnostic, or exploratory.
+- 将源文件作为证据引用前，确认文件确实存在。
+- 当多个目录都声称包含同一份数据时，比较哈希值、行数、样本数或文档数。
+- 记录预处理过程和排除项。
+- 在适用情况下，区分训练、选择、验证和最终评估。
+- 当失败结果、未发现效应的结果或负面结果会影响解释时，必须将其保留并明确呈现。
+- 检查所报告的指标是否与图中或表中的数值一致。
+- 判定结果属于描述性、预测性、因果性、机制性、诊断性还是探索性结果。
 
-## Common Risks
+## 常见风险
 
-| Risk | Why it matters |
+| 风险 | 重要性 |
 | --- | --- |
-| Data leakage | Inflates apparent performance or confidence. |
-| Unclear split or sampling | Blocks reproducibility and external validity. |
-| Selection on final evaluation | Makes final metrics optimistic. |
-| Missing comparator | Weakens novelty or practical value. |
-| Metric mismatch | Claim does not match what was measured. |
-| Untracked preprocessing | Results cannot be audited. |
-| Overgeneralization | Local evidence is written as universal. |
+| 数据泄漏 | 会夸大表面性能或结论可信度。 |
+| 数据划分或抽样方式不明确 | 会妨碍结果复现和外部有效性判断。 |
+| 根据最终评估结果进行选择 | 会使最终指标偏于乐观。 |
+| 缺少比较对象 | 会削弱创新性或实用价值。 |
+| 指标不匹配 | 主张与实际测量内容不一致。 |
+| 预处理过程未追踪 | 结果无法审计。 |
+| 过度泛化 | 将局部证据写成普遍结论。 |
 
-## Safe Output
+## 安全输出格式
 
-If provenance is incomplete, write:
+溯源信息不完整时，按以下格式记录：
 
 ```text
-Supported:
-Partially supported:
-Not yet supported:
-Missing artifact:
-Risk:
-Next verification step:
+已有支持：
+部分支持：
+尚无支持：
+缺失产物：
+风险：
+下一项核验步骤：
 ```
 
-Do not fabricate a clean lineage when files, logs, or decisions are missing.
+文件、日志或决策信息缺失时，不得虚构一条完整、清晰的溯源链。

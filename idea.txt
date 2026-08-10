@@ -1,0 +1,2 @@
+ 1.journal-wr journal-writing-profileiting-profile
+调用这个skill搜索期刊文章的时候，采用下载的skill或者工具

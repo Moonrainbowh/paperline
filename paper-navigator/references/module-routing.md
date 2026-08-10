@@ -1,66 +1,90 @@
-# Module Routing
+# 模块路由
 
-Use this file when the user asks what to do next, gives a mixed research request, or asks for a full paper workflow.
+用于用户不知道下一步、给出混合研究任务或要求完整论文流程时。
 
-## Routing Order
+## 路由顺序
 
-1. Identify the desired artifact: search log, reading card, result audit, figure plan, manuscript text, citation map, review report, response letter, or next-step plan.
-2. Identify the current stage: context, literature, reading, provenance, figure, writing, citation, review, or rebuttal.
-3. Check available evidence: user notes, papers, data, code, logs, figures, tables, draft text, author decisions, venue rules, or reviewer comments.
-4. Choose one primary module and list any follow-up modules.
-5. Produce the smallest safe artifact that moves the work forward.
+1. 识别所需产物：检索日志、已核验全文、获取报告、阅读卡、结果审计、图表计划、中文章节、中文定稿、引用地图、审查报告、回复信或下一步计划。
+2. 识别当前阶段：研究边界、文献、全文获取、阅读、结果溯源、图表、中文写作、引用、审查或审稿回复。
+3. 检查已有证据：笔记、论文、数据、代码、日志、图表、草稿、作者决定、目标期刊合同或审稿意见。
+4. 选择一个主模块，并列出后续模块。
+5. 产生能够推进任务的最小安全产物。
 
-## Decision Table
+## 决策表
 
-| Signal | Primary module | Typical output |
+| 用户信号 | 主模块 | 典型产物 |
 | --- | --- | --- |
-| "where should I start", "organize this project", "paper workflow" | context | research ledger, missing inputs, next safe action |
-| "find papers", "literature review", "related work" | literature | search strategy, query log, candidate table |
-| "read this paper", "extract methods", "what can this source support" | reading | source-grounded reading card |
-| "audit results", "data/code/logs", "metrics", "reproduce" | provenance | artifact lineage, result table, risk flags |
-| "make a figure", "which chart", "caption", "visual check" | figure | figure contract, chart choice, QA list |
-| "write introduction/method/results/discussion", "polish section" | writing | section draft plus claim-evidence-boundary notes |
-| "add citations", "verify references", "support this sentence" | citation | segmented claims, support grades, metadata checks |
-| "pre-submission", "act as reviewer", "will this be rejected" | review | risk audit, decision blockers, revision priorities |
-| "reviewer comments", "rebuttal", "response letter" | rebuttal | comment classification, response strategy, draft replies |
+| “从哪里开始”“整理这个项目”“规划论文流程” | 研究边界 | 研究护照、缺失输入、下一项安全动作 |
+| “找论文”“文献综述”“相关工作” | 文献 | 检索策略、查询日志、候选表 |
+| “下载这个DOI”“找全文”“获取出版社PDF” | 全文获取 | 合法获取路线、已核验PDF、逐DOI报告 |
+| “读这篇论文”“提取方法”“这篇能支持什么” | 阅读 | 来源锚定阅读卡 |
+| “审计结果”“检查数据/代码/日志/指标” | 结果溯源 | 产物来源链、结果表、风险标记 |
+| “写技术路线”“说明研究步骤” | 技术路线文字 | 读取 `paper-type-structures.md`、`manuscript-finalization-workflow.md` 和 `section-methods-results.md`，形成问题—输入—动作—输出—验证链 |
+| “画技术路线图”“选图”“写图注”“检查图表” | 图表 | 先锁定技术路线文字合同，再生成图件契约、图表选择、图注和视觉质量检查 |
+| “已选定期刊”“接入期刊画像/合同”“期刊换了” | 期刊合同接收 | 读取 `journal-contract-intake.md`，输出合同有效性、版本绑定、影响范围和章节回退记录 |
+| “从已有材料写完整中文论文”“把中文稿定下来” | 中文定稿 | 19步状态、主张合同、各章节中文稿、质量门记录 |
+| “写综述论文”“系统综述”“范围综述” | 综述专用结构 | 读取 `paper-type-structures.md`，建立检索—筛选—评价—综合合同及专用章节 |
+| “写纯理论论文”“定理/证明型论文” | 理论专用结构 | 读取 `paper-type-structures.md`，建立定义—假设—命题—证明—边界合同及专用章节 |
+| “写/修改摘要、引言、方法、结果、讨论、结论” | 中文章节写作 | 段落蓝图、中文正文、主张—证据—边界备注 |
+| “检查逻辑”“反向提纲”“全文是否一致” | 一致性 | 主题句序列、主张合同、跨章节冲突和修订清单 |
+| “加引用”“核验参考文献”“支持这句话” | 引用 | 原子主张、支持等级、元数据检查 |
+| “投稿前检查”“模拟审稿”“会不会被拒” | 审查 | 按严重度排列的阻塞项、主要问题和修改优先级 |
+| “审稿意见”“回复审稿人”“response letter” | 审稿回复 | 意见分类、策略、逐条回复草案 |
+| “翻成英文”“按目标期刊英语写作” | 英文交接 | 本模块检查中文稿状态；S6 只生成待锁定交接包，S7 才生成正式交接包；随后必须另行加载 `$zh-en-paper-translator` 或用户指定 Skill |
 
-## Multi-Module Defaults
+## 多模块默认路线
 
-- Full workflow: `context -> literature -> reading -> provenance -> figure -> writing -> citation -> review`.
-- Existing results but no draft: `provenance -> figure -> writing -> citation -> review`.
-- Existing draft but weak support: `writing -> citation -> review`, with provenance checks for result claims.
-- Reviewer comments: `rebuttal`, with `review` and `provenance` checks when comments challenge method, data, results, statistics, or claims.
+- 完整研究流程：`研究边界 → 文献 → 合法全文 → 阅读 → 结果溯源 → 图表 → 中文定稿 → 引用 → 投稿前审查`。
+- 已有候选但没有PDF：`文献 → 合法全文 → 阅读`，只获取筛选保留的来源。
+- 已有结果但没有正文：`结果溯源 → 图表/技术路线 → 中文定稿 → 引用 → 审查`。
+- 已有已确认目标期刊合同：`合同接收核验 → 影响分析 → 相关章节写作/修订 → 一致性与质量门`；合同无效时继续通用中文稿，不擅自补齐规则。
+- 已有中文初稿但支持较弱：`主张地图 → 结果溯源/阅读 → 章节修订 → 引用 → 反向提纲 → 审查`。
+- 已完成中文稿需英文：达到 `S6` 时生成待作者锁定的交接包并请求作者审阅确切版本；作者明确锁定后标记 `S7`，再生成正式交接包并停止。不要在本模块内混写两种语言，也不要承诺由 `paper-navigator` 随后直接英译。
+- 真实审稿意见：`审稿回复`，方法、数据、结果或统计争议同时调用结果溯源和审查。
 
-## Gate Check
+## 分流规则
 
-Before routing, check whether the request asks you to decide or execute:
+- 工程、实验、数值模拟和方法类研究论文：使用完整19步中文定稿主线。
+- 综述论文：读取 `paper-type-structures.md`，先确定综述类型并建立检索、筛选、质量评估和主题综合合同；不强制实验论文的“方法—结果”技术路线。
+- 纯理论论文：读取 `paper-type-structures.md`，建立定义、假设、命题、证明、反例/边界和推论结构；不强制实验结果、基线或消融。
+- 目标期刊未确定：使用通用中文结构，记录 `venue-unselected`，不猜期刊规则。仅在 `paperline` 中作者授权跳过选刊阶段时，顶层状态才使用 `venue-pending`。
+- 目标期刊已确定：只有 `target-journal-writing-contract.md` 为 `confirmed`、`blocking_issues=[]` 且稿件、合同与证据版本明确时才应用；详细检查和变更回退见 `journal-contract-intake.md`。
+- 目标期刊或合同变化：使受影响的章节与适配层回退，保留未受影响的通用中文稿和证据状态；原 `S7` 只锁定原稿件—合同组合。
 
-- target venue formatting or disclosures,
-- new analysis or validation,
-- data/code release policy,
-- author declarations,
-- formal response to real reviewers,
-- global installation or publication of a skill.
+## 确认边界检查
 
-If yes, state the gate and continue only with safe scaffolding unless the user confirms.
+选择模块前检查是否要求决定或执行：
 
-## Routing Output Template
+- 最终目标期刊格式或披露；
+- 新分析、新实验或新验证；
+- 数据/代码公开策略；
+- 作者、伦理、基金和利益冲突声明；
+- 基于真实审稿意见作正式承诺；
+- 全局安装或发布 Skill。
+
+触发时先说明需要决定的事项，同时继续完成不依赖该决定的安全脚手架。
+
+## 路由输出模板
 
 ```text
-Routing:
-- Primary module:
-- References to read:
-- Current stage:
-- Evidence available:
-- Gate status:
-- Multi-agent useful:
+路由结果：
+- 主模块：
+- 需要读取：
+- 当前阶段：
+- 已有证据：
+- 当前章节/全文状态：
+- 目标期刊状态：venue-unselected / contract-pending / contract-confirmed（`paperline` 授权旁路另记 `venue-pending`）
+- 合同版本与证据版本：
+- 合同变化影响：
+- 确认边界：
+- 是否适合并行只读检查：
 
-Artifact I can produce now:
+现在可以交付：
 - ...
 
-Missing inputs:
+缺失输入：
 - ...
 
-Next safe action:
+下一项安全动作：
 - ...
 ```
