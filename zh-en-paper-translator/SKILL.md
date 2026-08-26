@@ -15,6 +15,7 @@ Translate the manuscript; do not redesign the study or silently rewrite its argu
 - Read `references/literature/geotechnical-domain-termbases-guide.md` and load the relevant scoped pack when the manuscript concerns machine learning in geotechnical engineering, geotechnical analogue materials, or salt-cavern construction. Use `references/termbases/geotechnical-machine-learning.tsv`, `references/termbases/geotechnical-analogue-materials.tsv`, or `references/termbases/salt-cavern-construction.tsv` respectively.
 - Read `references/literature/salt-cavern-geotech-ai-guide.md` and load relevant rows from the broader `references/termbases/salt-cavern-geotech-ai.tsv` for salt-cavern storage/operation, hydrogen storage, compressed-air energy storage, or general geotechnical AI concepts not covered by the scoped packs.
 - Read `references/human-review-and-output.md` for every substantial passage or complete manuscript.
+- Read `references/independent-translation-review.md` and run an independent review pass when the text contains unfamiliar-domain terms, rare technical expressions, multiple context-dependent senses, a complete abstract/manuscript section, or when the user requests review.
 - Read `references/pipeline-handoff.md` when a formal paperline handoff package is supplied or the user explicitly requests pipeline mode.
 - Read `references/journal-language-boundary.md` only when the user provides a target journal or explicitly requests journal-language compliance.
 - Read `references/format-routing.md` whenever the input is a file.
@@ -103,7 +104,13 @@ When no target journal is supplied, use neutral international academic English a
 
 In `pipeline` mode, require `target_journal_status: contract-confirmed` and apply target-journal contract content only when the handoff records the same decision path, decision schema version and SHA-256, contract path/version/SHA-256, selection-evidence version, and writing-profile evidence ID. Apply only official mechanical language rules; return substantive restructuring, claim, evidence, section, disclosure, or word-limit changes to the writing pipeline instead of performing them during translation.
 
-### 8. Run integrity checks
+### 8. Run independent review when triggered
+
+Use `references/independent-translation-review.md`. Give the reviewer the Chinese source, English draft, section type, protected elements, and relevant terminology subset, but not the translator's stylistic rationale. Require source-to-translation findings rather than free rewriting. The reviewer may identify and recommend corrections, but it may not lock a scientifically ambiguous term or substitute its preference for the user's intent.
+
+Apply supported findings and consolidate only unresolved meaning-changing issues for the user. If no independent agent is available, perform the checklist as a second pass and state that it was not independent.
+
+### 9. Run integrity checks
 
 Compare the English against the Chinese source sentence by sentence. Check protected elements, terminology, claim strength, logical relations, and omissions. When files are available, run:
 
@@ -128,6 +135,7 @@ Pause and request human confirmation when any of these conditions holds:
 - DOCX contains unresolved tracked changes, comments, protected content controls, or unsupported equation objects that make the visible source ambiguous;
 - PDF extraction order is unreliable, a scan requires OCR, or an OCR result changes table or equation meaning;
 - a formula contains natural-language text whose translation boundary cannot be separated safely from its mathematical structure.
+- an independent reviewer identifies a meaning-changing issue that cannot be resolved from the source, terminology hierarchy, units, or definitions;
 - pipeline mode lacks `S7`, an author-locked package, an exact manuscript SHA-256, a confirmed journal binding, or any locked terminology/number/boundary field required by `references/pipeline-handoff.md`;
 - the supplied manuscript, handoff package, or target-journal contract version differs from the locked versions;
 - a requested journal change would require substantive adaptation rather than official mechanical language compliance.

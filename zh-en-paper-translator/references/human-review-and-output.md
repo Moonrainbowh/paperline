@@ -20,6 +20,8 @@ For scanned or hybrid PDFs, also pause when OCR cannot reliably distinguish pros
 
 After translation, list only material warnings: unresolved terminology, possible omissions, protected-element mismatches, claim-strength changes, or source ambiguities. A clean passage needs no ceremonial approval gate.
 
+When `independent-translation-review.md` is triggered, resolve supported reviewer findings before this gate. The review agent may recommend a correction or flag `requires_user_confirmation`, but only the user/author may lock an unresolved scientific meaning. Do not show rejected stylistic suggestions or an empty review report in the final output.
+
 ## Default Output Order
 
 1. **English translation or final translated artifact(s)**

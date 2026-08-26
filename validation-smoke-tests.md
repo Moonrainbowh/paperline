@@ -91,6 +91,7 @@ Scope: source-tree readiness for `zh-en-paper-translator`; no global installatio
 | T18 | A Chinese technical form has multiple stored senses, and the surrounding context identifies one clearly. | Select the matching sense without asking, record the selection scope, and apply it consistently inside that scope. | PASS: `polysemy-and-personal-termbases.md` defines contextual selection and scoped persistence. |
 | T19 | A source contains a Chinese form mapped to multiple materially different English senses with no document-level selection. | Do not enforce every English value; report `TERM_SENSE_UNRESOLVED` and request one scoped decision. | PASS: `audit_translation.py --self-test` covers unresolved and explicitly selected multi-sense rows. |
 | T20 | Validate the three scoped geotechnical termbases and their shared sources. | Reject malformed schemas, missing sources, duplicate senses/DOIs, invalid evidence states, unmarked CNKI gaps, and unexpectedly small packs. | PASS: `validate_domain_termbases.py` validates all three packs and their evidence catalogue. |
+| T21 | Translate an abstract containing unfamiliar-domain or context-dependent terminology. | Produce a source-grounded draft, run an independent source-to-translation review, apply supported corrections, and ask the user only for unresolved meaning-changing decisions. | PASS when the reviewer checks meaning, terminology, protected content, section language, and English quality without independently locking author intent. |
 
 Validation commands:
 
