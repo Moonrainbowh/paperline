@@ -6,7 +6,9 @@ Use human review to resolve meaning, not to offload routine translation decision
 
 ### Gate 1: Critical terminology
 
-Before translating dependent passages, batch only unresolved terms whose alternatives materially change technical meaning. Show context, alternatives, the difference, and a recommended choice with its authority level.
+Resolve multi-sense terms from context when evidence is sufficient. Do not ask merely because the master termbase contains several senses. For unresolved alternatives that materially change technical meaning, continue independent passages and batch the questions before finalizing the affected translation. Show context, alternatives, the difference, and a recommended choice with its authority level.
+
+During terminology-library construction, perform automated collection, ranking, and conflict detection first, then present one final human-review batch. Once the user confirms a sense, store its decision scope and do not ask again inside that scope unless later evidence conflicts. A new context outside the confirmed scope may trigger a new question.
 
 ### Gate 2: Source ambiguity
 

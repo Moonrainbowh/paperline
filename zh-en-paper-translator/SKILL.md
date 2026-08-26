@@ -11,7 +11,9 @@ Translate the manuscript; do not redesign the study or silently rewrite its argu
 
 - Read `references/section-language-matrix.md` for every translation task. Apply the row matching the section being translated.
 - Read `references/terminology-governance.md` whenever technical terms, abbreviations, named methods, materials, software, standards, or a user glossary appear.
-- Read `references/literature/salt-cavern-geotech-ai-guide.md` and load the relevant rows from `references/termbases/salt-cavern-geotech-ai.tsv` when the manuscript concerns salt-cavern storage or geotechnical AI/ML.
+- Read `references/polysemy-and-personal-termbases.md` when one Chinese form has multiple technical senses, when creating a personal/project glossary, or when a termbase contains repeated `zh` values.
+- Read `references/literature/geotechnical-domain-termbases-guide.md` and load the relevant scoped pack when the manuscript concerns machine learning in geotechnical engineering, geotechnical analogue materials, or salt-cavern construction. Use `references/termbases/geotechnical-machine-learning.tsv`, `references/termbases/geotechnical-analogue-materials.tsv`, or `references/termbases/salt-cavern-construction.tsv` respectively.
+- Read `references/literature/salt-cavern-geotech-ai-guide.md` and load relevant rows from the broader `references/termbases/salt-cavern-geotech-ai.tsv` for salt-cavern storage/operation, hydrogen storage, compressed-air energy storage, or general geotechnical AI concepts not covered by the scoped packs.
 - Read `references/human-review-and-output.md` for every substantial passage or complete manuscript.
 - Read `references/pipeline-handoff.md` when a formal paperline handoff package is supplied or the user explicitly requests pipeline mode.
 - Read `references/journal-language-boundary.md` only when the user provides a target journal or explicitly requests journal-language compliance.
@@ -75,7 +77,9 @@ Build or update a terminology ledger using the mandatory priority order:
 
 Lock an approved term across the document. Do not vary it merely to avoid repetition. Batch unresolved critical terms for human confirmation before translating dependent passages. Continue without interruption for ordinary wording choices and report them afterward only if materially uncertain.
 
-For salt-cavern or geotechnical-AI manuscripts, treat the bundled termbase as a source-supported starting layer. Select only context-relevant rows, overlay higher-priority user/author terms, and create a document-specific subset before auditing. Never treat a bundled `verified` row as user-confirmed, and never enforce a `pending` row without human review.
+For the three scoped geotechnical domains, load the matching focused pack first and use the older combined pack only to fill concepts outside its scope. Treat every bundled termbase as a source-supported starting layer. Select only context-relevant rows, overlay higher-priority user/author terms, and create a document-specific subset before auditing. Never treat a bundled `verified` row as user-confirmed, and never enforce a `pending` row without human review.
+
+Allow one Chinese surface form to have multiple sense-scoped rows. Select a sense from the local sentence, paragraph, section, variable definitions, figures/tables, and project glossary when the evidence is sufficient. Do not ask merely because multiple rows exist. If the evidence cannot distinguish materially different senses, continue safe independent work and batch the unresolved sense for confirmation before finalizing the affected translation. Persist the confirmed choice at the narrowest valid scope and do not ask again within that scope unless later context conflicts.
 
 ### 3. Reconstruct meaning before prose
 

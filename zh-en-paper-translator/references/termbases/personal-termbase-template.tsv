@@ -1,0 +1,3 @@
+zh	en	sense_id	domain	context	context_cues	status	authority	source	selection	decision_scope	confirmed_by	confirmed_at	forbidden	notes
+扩容	dilatancy	rock-damage-dilatancy	rock-mechanics	Inelastic volumetric expansion associated with rock damage or yielding	体积应变|损伤|扩容准则	verified	literature	Replace with source DOI or standard					cavern enlargement	Example sense; retain only with real project evidence.
+扩容	cavern enlargement	cavern-construction-enlargement	salt-cavern	Deliberate enlargement of a solution-mined cavern	水溶|注水|采卤|腔体体积	verified	literature	Replace with source DOI or standard					dilatancy	Example sense; retain only with real project evidence.

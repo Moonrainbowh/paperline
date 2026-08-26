@@ -86,8 +86,11 @@ Scope: source-tree readiness for `zh-en-paper-translator`; no global installatio
 | T13 | Translate a LaTeX project. | Return translated `.tex`; protect commands, labels, citation keys, equations, paths, and image content; compile and inspect. | PASS: `latex-workflow.md` defines protected constructs and compile/render blockers. |
 | T14 | Translate tables and formulas in any supported format. | Translate human-readable cells and formula labels while preserving table geometry and mathematical structure. | PASS: `tables-formulas.md` defines translatable and protected components plus minimum audit requirements. |
 | T15 | Compare source/output structure for Markdown, DOCX, PDF, or LaTeX. | Inventory all four formats and detect protected-structure changes for same-format pairs. | PASS: `audit_document_structure.py --self-test` covers Markdown, LaTeX, DOCX, and PDF low-text/OCR detection when `pypdf` is available. |
-| T16 | Translate a salt-cavern or geotechnical-AI manuscript without a user glossary. | Load only relevant bundled terms, preserve source priority, and route ambiguous concepts to human review. | PASS: the domain guide defines selective loading; the termbase separates `verified` defaults from `pending` candidates and contains source IDs. |
+| T16 | Translate a salt-cavern, geotechnical-ML, or analogue-material manuscript without a user glossary. | Load the matching scoped pack first, preserve source priority, and route genuinely unresolved senses to human review. | PASS: the focused domain guide defines selective loading and scoped persistence. |
 | T17 | Validate the bundled literature and terminology data. | Reject missing columns, duplicate IDs/DOIs/Chinese terms, malformed DOI URLs, invalid statuses, and unresolved source IDs. | PASS: `validate_reference_data.py` performs these checks and enforces minimum catalogue sizes. |
+| T18 | A Chinese technical form has multiple stored senses, and the surrounding context identifies one clearly. | Select the matching sense without asking, record the selection scope, and apply it consistently inside that scope. | PASS: `polysemy-and-personal-termbases.md` defines contextual selection and scoped persistence. |
+| T19 | A source contains a Chinese form mapped to multiple materially different English senses with no document-level selection. | Do not enforce every English value; report `TERM_SENSE_UNRESOLVED` and request one scoped decision. | PASS: `audit_translation.py --self-test` covers unresolved and explicitly selected multi-sense rows. |
+| T20 | Validate the three scoped geotechnical termbases and their shared sources. | Reject malformed schemas, missing sources, duplicate senses/DOIs, invalid evidence states, unmarked CNKI gaps, and unexpectedly small packs. | PASS: `validate_domain_termbases.py` validates all three packs and their evidence catalogue. |
 
 Validation commands:
 
@@ -95,8 +98,10 @@ Validation commands:
 python zh-en-paper-translator/scripts/audit_translation.py --self-test
 python zh-en-paper-translator/scripts/audit_document_structure.py --self-test
 python zh-en-paper-translator/scripts/validate_reference_data.py
+python zh-en-paper-translator/scripts/validate_domain_termbases.py
 python -m py_compile zh-en-paper-translator/scripts/audit_translation.py
 python -m py_compile zh-en-paper-translator/scripts/audit_document_structure.py
 python -m py_compile zh-en-paper-translator/scripts/validate_reference_data.py
+python -m py_compile zh-en-paper-translator/scripts/validate_domain_termbases.py
 python -X utf8 C:\Users\Windows11\.codex\skills\.system\skill-creator\scripts\quick_validate.py zh-en-paper-translator
 ```

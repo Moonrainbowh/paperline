@@ -9,7 +9,7 @@ import json
 import re
 import sys
 import tempfile
-from collections import Counter
+from collections import Counter, defaultdict
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
@@ -62,15 +62,50 @@ def load_termbase(path: Path | None) -> list[dict[str, str]]:
         return [{key: (value or "").strip() for key, value in row.items()} for row in reader]
 
 
+def row_is_selected(row: dict[str, str]) -> bool:
+    return row.get("selection", "").casefold() in {"selected", "true", "yes", "1"}
+
+
 def audit_terms(source: str, translation: str, rows: list[dict[str, str]]) -> list[Finding]:
     findings: list[Finding] = []
     translation_folded = translation.casefold()
+
+    grouped: dict[str, list[tuple[int, dict[str, str]]]] = defaultdict(list)
     for index, row in enumerate(rows, start=2):
-        zh = row.get("zh", "")
-        en = row.get("en", "")
-        status = row.get("status", "locked").casefold() or "locked"
-        if not zh or zh not in source or status in {"pending", "rejected"}:
+        if row.get("zh", ""):
+            grouped[row["zh"]].append((index, row))
+
+    for zh, group in grouped.items():
+        if zh not in source:
             continue
+
+        usable = [(index, row) for index, row in group if row.get("status", "locked").casefold() != "rejected"]
+        selected = [(index, row) for index, row in usable if row_is_selected(row)]
+        distinct_english = {row.get("en", "").casefold() for _, row in usable if row.get("en", "")}
+
+        if len(selected) == 1:
+            chosen = selected
+        elif len(selected) > 1 or (not selected and len(distinct_english) > 1):
+            senses = [
+                f"row {index}: {row.get('sense_id') or '(no sense_id)'} -> {row.get('en') or '(blank)'}"
+                for index, row in usable
+            ]
+            findings.append(Finding(
+                "error",
+                "TERM_SENSE_UNRESOLVED",
+                f"Source contains '{zh}', but the termbase does not select exactly one of its distinct senses: {senses}",
+            ))
+            continue
+        else:
+            chosen = usable[:1]
+
+        if not chosen:
+            continue
+        index, row = chosen[0]
+        status = row.get("status", "locked").casefold() or "locked"
+        if status == "pending" and not row_is_selected(row):
+            continue
+        en = row.get("en", "")
         if en and en.casefold() not in translation_folded:
             findings.append(Finding("error", "TERM_MISSING", f"Row {index}: source contains '{zh}' but translation lacks approved term '{en}'"))
         forbidden = [item.strip() for item in row.get("forbidden", "").split("|") if item.strip()]
@@ -109,6 +144,18 @@ def run_self_test() -> int:
     observed = {finding.code for finding in bad_findings}
     if not expected.issubset(observed):
         print(f"SELF-TEST FAIL: expected {sorted(expected)}, observed {sorted(observed)}", file=sys.stderr)
+        return 1
+    poly_rows = [
+        {"zh": "扩容", "en": "dilatancy", "sense_id": "rock-damage", "status": "verified"},
+        {"zh": "扩容", "en": "cavern enlargement", "sense_id": "cavern-enlargement", "status": "verified"},
+    ]
+    unresolved = audit_terms("岩体发生扩容。", "The rock mass exhibited dilatancy.", poly_rows)
+    if {finding.code for finding in unresolved} != {"TERM_SENSE_UNRESOLVED"}:
+        print(f"SELF-TEST FAIL: unresolved polysemy was not detected: {unresolved}", file=sys.stderr)
+        return 1
+    poly_rows[0]["selection"] = "selected"
+    if audit_terms("岩体发生扩容。", "The rock mass exhibited dilatancy.", poly_rows):
+        print("SELF-TEST FAIL: selected polysemy sense was not enforced cleanly", file=sys.stderr)
         return 1
     with tempfile.TemporaryDirectory() as tmp:
         termbase_path = Path(tmp) / "terms.tsv"

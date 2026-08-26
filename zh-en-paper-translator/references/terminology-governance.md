@@ -14,7 +14,7 @@ Never let a lower-priority source override a higher-priority decision without th
 
 ## Bundled Domain Reference
 
-For salt-cavern storage and geotechnical AI/ML manuscripts, read `literature/salt-cavern-geotech-ai-guide.md` and use `termbases/salt-cavern-geotech-ai.tsv` as a candidate source layer. The bundled rows are either `verified` from a standard or literature source, or `pending` for contextual review; none of them is automatically `locked` for a new manuscript.
+For machine learning in geotechnical engineering, geotechnical analogue materials, and salt-cavern construction, read `literature/geotechnical-domain-termbases-guide.md` and load the matching scoped TSV pack. For broader salt-cavern storage/operation, hydrogen storage, compressed-air energy storage, and general geotechnical AI/ML, use `literature/salt-cavern-geotech-ai-guide.md` and `termbases/salt-cavern-geotech-ai.tsv`. No bundled row is automatically `locked` for a new manuscript.
 
 Create a document-specific subset rather than passing the entire broad termbase to the audit script. Apply higher-priority user and author choices over that subset, record the override source, and keep the original reference pack unchanged unless the user explicitly asks to update the reusable resource.
 
@@ -26,11 +26,24 @@ Use a Markdown table or a UTF-8 TSV file with these columns:
 | --- | --- |
 | `zh` | Exact Chinese source term |
 | `en` | Approved or candidate English term |
-| `status` | `locked`, `verified`, `pending`, or `rejected` |
-| `authority` | `user`, `official`, `standard`, `literature`, or `inferred` |
+| `status` | `locked`, `verified`, `recommended`, `context-dependent`, `pending`, or `rejected` |
+| `authority` | `user`, `official`, `standard`, `literature`, `corpus`, or `inferred` |
 | `source` | Source title, standard identifier, URL, DOI, file, or user decision |
 | `forbidden` | Disallowed English alternatives separated by `|` |
 | `notes` | Scope, capitalization, singular/plural, abbreviation, or context restrictions |
+
+For a multi-sense or personal termbase, also use the optional fields below. Read `polysemy-and-personal-termbases.md` for the selection rules.
+
+| Field | Meaning |
+| --- | --- |
+| `sense_id` | Stable identifier for one technical sense of the Chinese form |
+| `domain` | Broad field such as `geotechnical-ml` or `physical-modelling` |
+| `context` | Short definition of when this English term is valid |
+| `context_cues` | Non-exhaustive source-language cues separated by `|` |
+| `selection` | Blank in a master termbase; `selected` in a document-specific subset |
+| `decision_scope` | `occurrence`, `paragraph`, `section`, `document`, `project`, or `personal` |
+| `confirmed_by` | User/author identifier or `context-inference` |
+| `confirmed_at` | ISO date for a human-confirmed decision |
 
 The audit script accepts the same column names. At minimum, provide `zh` and `en`.
 
@@ -43,6 +56,10 @@ The audit script accepts the same column names. At minimum, provide `zh` and `en
 - Define an abbreviation at first use in the relevant document scope, then use it consistently.
 - Do not expand an abbreviation when its official form is intentionally unexpanded.
 - Record context-specific translations separately when one Chinese term legitimately maps to different English concepts.
+- Give each distinct concept a stable `sense_id`; never collapse different concepts merely because their Chinese surface form is identical.
+- In a master termbase, retain all supported senses with blank `selection`. In the document-specific audit subset, mark exactly one applicable sense `selected` when the same `zh` has different English realizations.
+- A contextual AI decision may select a sense for the current occurrence or document without promoting it to a personal `locked` decision.
+- Reuse a confirmed decision only within its recorded `decision_scope`. Ask again only when a later occurrence falls outside that scope or contradicts its context rule.
 
 ## Human-Confirmation Trigger
 
@@ -59,4 +76,4 @@ Batch questions in this form:
 | Chinese term | Candidate A | Candidate B | Context | Difference affecting meaning | Recommended choice and basis |
 | --- | --- | --- | --- | --- | --- |
 
-Ask the user to confirm the English term, then mark it `locked`. For ordinary lexical choices that do not change technical meaning, translate directly and do not interrupt.
+Ask the user to confirm the English term, then mark it `locked` at the narrowest valid scope. For ordinary lexical choices that do not change technical meaning, translate directly and do not interrupt. During terminology-library construction, defer these questions to one final review batch. During manuscript translation, continue unrelated passages but do not finalize a meaning-dependent passage until the sense is resolved.
