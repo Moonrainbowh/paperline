@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Paperline · 科研工作台</title><link rel="stylesheet" href="/style.css"></head>
+<body>
+<aside class="sidebar"><a class="brand" href="/">p<span>↗</span> <b>paperline<small>RESEARCH WORKSPACE</small></b></a><div class="workspace">本地工作空间 <span>LOCAL</span></div><nav aria-label="工作台导航"><button data-view="overview" class="active">◫　流水线总览</button><button data-view="modules">▦　能力与文档</button><button data-view="checks">✓　质量校验</button><button data-view="runs">≡　运行记录</button><button data-view="gaps">↗　待建设环节</button></nav><div class="sidebar-bottom"><span class="dot"></span> 本地源码连接<span>中文定稿优先 · 证据驱动</span></div></aside>
+<main><header><span>科研工作空间 <i>/</i> <span id="breadcrumb">流水线总览</span></span><button id="refresh" class="quiet">↻ 刷新源码</button></header><div id="app" aria-live="polite"><p>正在读取本地仓库…</p></div><footer>Paperline / 从证据到论文 <span>状态来自本地源码与本次校验，非论文完成进度</span></footer></main>
+<dialog id="reader"><div class="dialog-top"><strong id="reader-title"></strong><button id="close-reader" aria-label="关闭">×</button></div><pre id="reader-body"></pre></dialog><div id="toast" role="status"></div><script src="/app.js"></script>
+</body></html>

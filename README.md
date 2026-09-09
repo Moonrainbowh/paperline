@@ -1,5 +1,11 @@
 # paperline 学术论文 Skills
 
+## 本地 Web UI
+
+运行 `python -X utf8 webui/server.py`，打开 <http://127.0.0.1:8765>。
+工作台汇集 P1–P5 流程总览、源码文档、7 项真实校验、已有检索记录和待建设环节。
+它目前是流程与质量检查的集成入口，尚未接入模型任务执行或真实论文项目管理。详见 [Web UI 使用说明](webui/README.md)。
+
 本仓库包含一个薄入口和三个可独立使用的专业 Codex Skills：
 
 | Skill | 范围 |
