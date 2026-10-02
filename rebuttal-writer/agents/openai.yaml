@@ -1,0 +1,4 @@
+interface:
+  display_name: "审稿回复"
+  short_description: "起草基于证据边界的逐条审稿回复"
+  default_prompt: "使用 $rebuttal-writer 根据真实审稿意见起草逐条回复和正文修改建议。"

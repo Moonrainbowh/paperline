@@ -1,0 +1,4 @@
+interface:
+  display_name: "方法写作"
+  short_description: "写清数据、实验、模型和可复现流程"
+  default_prompt: "使用 $methods-writer 根据已有实验或模拟材料起草可复现的方法章节。"

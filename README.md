@@ -1,21 +1,23 @@
 # paperline 学术论文 Skills
 
-## 本地 Web UI
-
-运行 `python -X utf8 webui/server.py`，打开 <http://127.0.0.1:8765>。
-工作台汇集 P1–P5 流程总览、源码文档、7 项真实校验、已有检索记录和待建设环节。
-它目前是流程与质量检查的集成入口，尚未接入模型任务执行或真实论文项目管理。详见 [Web UI 使用说明](webui/README.md)。
-
-本仓库包含一个薄入口和三个可独立使用的专业 Codex Skills：
+本仓库提供论文流程编排、轻量路由和可独立使用的专业 Codex Skills。
 
 | Skill | 范围 |
 | --- | --- |
-| `paperline` | 编排中文研究画像、期刊决策/契约、中文 S6/S7 定稿、忠实英译和投稿前检查；只管阶段、确认门、版本、交接和恢复。 |
-| `paper-navigator` | 组织证据驱动的文献检索、合法全文获取、阅读、结果溯源、中文论文写作定稿、引用、图表、投稿前审查和审稿回复。 |
-| `journal-navigator` | 使用有日期和来源的证据做跨期刊硬门/软偏好筛选，再为作者确认的目标期刊建立“期刊轨道 + 领域轨道”写作画像和可验证契约。 |
-| `zh-en-paper-translator` | 在中文稿定稿后，将其转换为忠实的学术英语，并执行章节语言、术语、人工确认和确定性完整性检查。 |
+| `paperline` | 管理正式 P1–P5、文件接力、作者确认、S6/S7、交接与失效恢复。 |
+| `paper-navigator` | 识别任务、选择专业 Skill、传递必要上下文；正式调用继承 paperline 阶段。 |
+| `literature-research` | 检索、阅读和核验文献，维护共享主张证据。 |
+| `introduction-writer` | 背景、研究现状、缺口、目标和贡献。 |
+| `methods-writer` | 数据、实验、模拟、模型、流程与复现信息。 |
+| `results-writer` | 整理结果摘要并起草 Results，绑定条件、数值和图表。 |
+| `discussion-writer` | 解释结果、比较文献、讨论意义、局限及适用边界。 |
+| `abstract-conclusion-writer` | 从稳定正文生成标题、关键词、摘要和结论。 |
+| `manuscript-reviewer` | 全文或局部审查、逐句主张审计及定位修订建议。 |
+| `rebuttal-writer` | 理解真实审稿意见，起草有证据边界的回复。 |
+| `journal-navigator` | 候选分析、官方规则核验和目标刊指南；正式 P2 交付确认的决定与合同。 |
+| `zh-en-paper-translator` | 中文稿忠实英译、术语和完整性检查。 |
 
-本仓库只包含工作流指导，不包含数据集、模型检查点、论文草稿、审稿意见、私人笔记或特定论文的中间产物。
+本次 Skill 改进及 S1–S8 验收见 [修改记录](reports/2026-10-02-skill-pipeline-improvements.md)。项目材料按需沿用现有路径；独立局部任务不要求建立整套文件或正式状态。
 
 ## `paperline` 用途
 
@@ -26,26 +28,20 @@
 
 ## `journal-navigator` 用途
 
-- 将期刊范围、论文类型、收录、OA/APC、时间、数据/伦理政策等作为硬门；未知硬门不视为通过。
-- 只对硬门通过者根据作者确认的偏好和权重排序，不伪造接受率或预测录用概率。
-- 作者选定后，再分别建立目标期刊表达画像和领域科学论证蓝图。
-- 只有 `target-journal-decision.md` 和 `target-journal-writing-contract.md` 都通过确定性校验，才允许正式交给 `paper-navigator`。
+- 复用共享文献，先识别研究定位并从相关论文发现候选期刊。
+- 逐字段核验官方 Scope、Article Type、索引、OA/APC 与投稿要求，保留来源、日期和 unknown。
+- 目标确认后生成匹配“期刊 × 研究方向 × Article Type”的指南；样本观察不等于官方规则。
+- 正式 P2 继承已有授权，准备决定与写作合同；真实作者确认和两份正式产物校验后，由 paperline 完成锁刊。
 
 ## `paper-navigator` 用途
 
-- 从零散研究材料规划完整论文流程。
-- 以工程、实验、数值模拟和方法类研究论文为默认对象，先完成中文文字定稿。
-- 为综述、纯理论和技术路线请求提供独立结构合同，不把实证论文模板强套到其他类型。
-- 执行“主题/边界→材料盘点→一句话主旨→贡献合同→章节结构→方法→结果→讨论→结论→最终引言→摘要→反向提纲→质量门”的19步工作流。
-- 在写作前建立主张—证据—边界地图，并细化到章节、段落和句子功能。
-- 保持文献检索、阅读、引用和相关工作可回溯来源。
-- 将筛选保留的 DOI 交给合法开放获取或已安装的 InstSci 机构访问流程，并在阅读前核验 PDF。
-- 审计数据、代码、结果、图表和引用来源。
-- 围绕论文主张规划图表、图注和技术路线。
-- 运行逐节反向提纲、跨章节一致性和中文定稿质量门。
-- 从真实审稿意见组织修改和回复。
-
-`paper-navigator` 的 AI 判定上限是 `S6 中文文字定稿`；此时只生成待作者锁定的交接包。只有作者审阅并明确锁定确切的 S6 版本后，才能标记 `S7 作者确认锁定` 并正式交给英文转换 Skill。期刊表达适配和投稿仍是后续独立状态。
+- 只负责理解任务、选择专业 Skill、安排必要顺序和传递最小上下文。
+- 用户明确指定 Skill 时优先尊重指定；短任务直接路由，不强制完整流程。
+- 独立多阶段请求可用“文献证据 → 方向性短名单 → 中文核心稿 → 审查 → 最终定刊”的混合路线。
+- 正式 paperline 调用继承当前 P 阶段、期刊状态及已确认边界，不另选独立路线。
+- 本节蓝图、正文和检查由 writer 产出；paperline 汇总论文地图并管理 S6/S7，reviewer 提供审查证据。
+- 复用作者当前采用稿件、结果摘要与共享证据，不把候选修订或作者采用当作科学支持已核验。
+- 不创建 Router 状态机、评分、哈希或正式交接包。科研图表可路由宿主已有的 `scientific-figure`，英译路由 `zh-en-paper-translator`。
 
 ## `zh-en-paper-translator` 用途
 
@@ -141,7 +137,7 @@ chaos-14-paperline/
 
 ## Installation
 
-Copy the desired skill folder or all four sibling folders into a local Codex skills directory, then restart Codex. The current source-tree work does not perform this installation automatically.
+Copy the desired specialist folder into a local Codex skills directory. For the full pipeline, copy the twelve Skill folders listed above as siblings so that shared references resolve, then restart Codex. Source-tree changes do not install or overwrite global Skills automatically.
 
 Common locations:
 

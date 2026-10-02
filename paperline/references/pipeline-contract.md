@@ -180,6 +180,8 @@ P3 另外保存 `content_state`，区分通用中文基线与期刊整合状态�
 
 三条正式交接的 Skill 映射固定为：P2→P3 `journal-navigator → paper-navigator`、P3→P4 `paper-navigator → zh-en-paper-translator`、P4→P5 `zh-en-paper-translator → paperline`。`created_at` 与作者锁定时间都必须是带 UTC 偏移的 ISO-8601 时间，且按该时间自身 UTC 偏移计算的本地日期不得晚于校验当天；相关事件存在时，时序必须满足 `P2→P3.created_at ≤ P3 author_lock.confirmed_at ≤ P3→P4.created_at ≤ P4→P5.created_at`。时序链中的 P3 作者锁只指当前 `complete + contract-applied` 且 `contract_sha256` 等于当前 venue 合同哈希的有效锁；失效回退时保留的旧历史锁不进入新链。
 
+上述 `paper-navigator` 保留为现有正式 schema 的路由接口标识，不代表 Router 自行写作、维护阶段或取得作者锁。P1/P3 内容与检查证据来自实际专业 Skill，由 `paperline` 汇总这些产物和作者决定，管理 S6/S7 及正式外壳。普通章节任务使用简短目标/材料/输出约定，不新增状态、哈希或交接 schema；专业 Skill 的完成不等于整个正式阶段完成。
+
 P2→P3 的 `source_artifacts` 必须分别引用 `target-journal-decision.md` 和 `target-journal-writing-contract.md`，不能用编排层自行概括的期刊规则代替。例如：
 
 ```json

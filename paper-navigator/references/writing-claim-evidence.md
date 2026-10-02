@@ -8,7 +8,7 @@
 - 任一章节：同时读取 `chinese-writing-rules.md` 和相应章节文件。
 - 逻辑检查：读取 `reverse-outline-consistency.md`。
 
-这些文件也由主 `SKILL.md` 直接路由，避免依赖深层引用链。
+完整稿的工作流和质量门由 `paperline/SKILL.md` 按需加载；章节细则从当前各 writer 的 `SKILL.md` 进入。共同的轻量起草协议见 [shared/section-writing.md](shared/section-writing.md)。本文件保留详细主张约束，不要求 Router 自己写正文或把所有旧规则加载到局部任务。
 
 ## 写作前主张地图
 

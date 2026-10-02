@@ -1,0 +1,4 @@
+interface:
+  display_name: "文献研究"
+  short_description: "检索、阅读和核验论文证据"
+  default_prompt: "使用 $literature-research 为当前论文查找、阅读并核验真正能够支持主张的文献。"

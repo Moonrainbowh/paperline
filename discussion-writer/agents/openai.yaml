@@ -1,0 +1,4 @@
+interface:
+  display_name: "讨论写作"
+  short_description: "解释结果并校准意义与局限"
+  default_prompt: "使用 $discussion-writer 根据 Results 和文献证据起草或修改 Discussion。"

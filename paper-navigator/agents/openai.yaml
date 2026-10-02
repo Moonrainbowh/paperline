@@ -1,4 +1,4 @@
 interface:
-  display_name: "论文导航与中文定稿"
-  short_description: "中文论文全流程写作定稿、合法全文获取、证据链审计与投稿预检"
-  default_prompt: "使用 $paper-navigator 从研究材料建立主张—证据地图，并推进到可信的中文论文文字定稿。"
+  display_name: "论文任务路由"
+  short_description: "统一路由论文写作、文献研究与选刊"
+  default_prompt: "使用 $paper-navigator 判断当前论文任务，在文献研究、章节写作、全文审查和选刊之间安排必要顺序。"

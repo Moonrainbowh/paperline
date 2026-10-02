@@ -1,0 +1,4 @@
+interface:
+  display_name: "引言写作"
+  short_description: "构建背景、研究缺口和贡献逻辑"
+  default_prompt: "使用 $introduction-writer 根据研究材料和文献证据起草或修改论文引言。"

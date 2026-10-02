@@ -1,0 +1,4 @@
+interface:
+  display_name: "论文全文审查"
+  short_description: "检查逻辑、证据、数字和章节一致性"
+  default_prompt: "使用 $manuscript-reviewer 对这篇论文做不打分的全文问题审查。"

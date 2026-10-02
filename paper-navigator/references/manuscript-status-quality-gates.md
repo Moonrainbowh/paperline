@@ -2,6 +2,8 @@
 
 用于区分材料准备、初稿、核验、中文定稿和作者锁定。硬性阻塞项不能被语言评分或综合分数抵消。
 
+本文件保留正式中文定稿的质量规则。当前由 `paperline` 汇总专业 Skill 的检查证据与作者决定，管理 S6/S7 和正式交接；`paper-navigator` 只分派任务，局部章节请求不要求创建这些状态和交接包。
+
 ## 目录
 
 1. 章节状态
@@ -160,4 +162,4 @@ target_journal_writing_profile_evidence_id:
 
 若仍为 `venue-unselected`，可保留 S7 作者锁定历史，但不生成上述正式 `paperline` P4 包；需要中性英译时可单独调用翻译 Skill 的 `standalone` 模式。
 
-生成 S7 正式交接包后结束 `paper-navigator` 流程。只有另行加载相应 Skill 后，才能执行英译或投稿材料制作。
+生成 S7 正式交接包后，`paperline` 才能按当前有效合同调用翻译 Skill 推进 P4。Router 的章节任务到此返回专业产物与检查结果，不自行启动英译或投稿材料制作。

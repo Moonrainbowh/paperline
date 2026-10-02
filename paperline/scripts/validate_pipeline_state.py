@@ -1835,7 +1835,7 @@ def run_self_test() -> int:
         missing_ledger_errors = validate_files(file_state, file_state_path)
         expected_missing_ledger_error = (
             "handoffs[1].payload.terminology_ledger.path: "
-            f"file not found: {terms_path}"
+            f"file not found: {file_state_path.resolve().parent / 'artifacts' / 'terms.tsv'}"
         )
         if missing_ledger_errors != [expected_missing_ledger_error]:
             failures += 1

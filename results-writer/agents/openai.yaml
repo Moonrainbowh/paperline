@@ -1,0 +1,4 @@
+interface:
+  display_name: "结果写作"
+  short_description: "从图表和数据写出证据绑定的 Results"
+  default_prompt: "使用 $results-writer 根据已有图表、表格和实验结果起草或修改 Results。"

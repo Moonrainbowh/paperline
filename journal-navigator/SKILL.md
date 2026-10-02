@@ -1,87 +1,83 @@
 ---
 name: journal-navigator
-description: 用可追溯证据完成跨期刊筛选，或在目标期刊确定后建立期刊轨道与领域轨道的中文写作画像和 confirmed 交接契约。用于用户要求推荐、比较、排除或选择投稿期刊，核验期刊范围、论文类型、收录、费用和投稿要求，分析目标期刊近期论文写法，或把已选期刊的明确规则与领域论证惯例交给 paper-navigator；不负责撰写全文、英译或投稿操作。
+description: 复用已有文献证据并核验官方期刊信息，识别研究定位、比较投稿期刊；目标期刊确定后，分析该刊近期近邻论文并生成写作参考。用于选刊、论文完成后重新选刊和目标期刊适配；不负责通用文献检索、代写全文、预测录用概率或执行投稿。
 ---
 
-# 期刊导航
+# Journal Navigator｜研究定位与选刊分析
 
-只在当前任务需要的模式中加载资料。先建立稳定的期刊决策接口，再做目标期刊写作画像；若作者已经明确指定期刊，可以跳过多候选比较，但仍须先生成简化的选择证据和决策文件，并记录这是作者决定。
+这个 Skill 只回答三个问题：
 
-## 选择模式
+1. 研究属于哪些学术方向或研究社区？
+2. 哪些期刊真正适合这项研究？
+3. 目标期刊中相似研究通常怎样组织论证和证据？
 
-| 用户目标 | 使用模式 | 必读资料 | 固定产物 |
-| --- | --- | --- | --- |
-| 推荐、比较、排除或选择期刊 | 模式一：跨期刊筛选 | [journal-selection.md](references/journal-selection.md) + [evidence-and-currentness.md](references/evidence-and-currentness.md) + [contracts-and-handoffs.md](references/contracts-and-handoffs.md) | `journal-selection-evidence.md` + `target-journal-decision.md` |
-| 已选期刊，建立栏目、结构、风格和证据要求 | 模式二：双轨写作画像 | [writing-profile.md](references/writing-profile.md) + [evidence-and-currentness.md](references/evidence-and-currentness.md) + [contracts-and-handoffs.md](references/contracts-and-handoffs.md) | 若稳定决策接口尚不存在，先生成两份简化选刊产物；再生成三份画像/契约文件，共五份 |
-| 既要选刊又要适配写作 | 依次运行模式一、模式二 | 先只读模式一资料；作者选定后再读模式二资料 | 五份产物（两份选刊产物 + 三份画像/契约产物） |
+默认提供可读的分析报告，不把选刊过程包装成复杂 workflow。普通任务不要求 YAML、固定 H2、候选 ID、版本号、SHA-256、状态机或机械确认块。
 
-禁止为了方便把两种评分混在一起：
+独立调用与 `paperline` 的正式 P2 使用同一套选刊分析方法，但交付不同：独立调用默认交付报告与写作指南；正式 P2 还须形成已确认的选刊决定和写作合同，供下游按既有契约接收。短名单、用户指定一个期刊或已有指南，都不能单独证明 P2 已完成。
 
-- 选刊只使用“硬门结果 + 软偏好评分 + 作者最终选择”；不得使用论文样本的 `J/R/E/U`。
-- 写作画像才使用 `O/A/B/C/D` 分类和 `J/R/E/U`，用于解释样本选择与章节用途；不得反推期刊录用概率。
+开始时优先读取 `paper_context` 与已有 `literature-evidence.md`（或等价对话内容）。通用论文发现、全文获取、阅读卡和主张级证据由 `literature-research` 统一维护；本 Skill 不从零重复同一轮检索。证据不足时，明确缺少的对象、问题、方法、年份或 Article Type，并让 `paper-navigator` 先路由 `literature-research` 增量补齐。本 Skill 可直接核验期刊官方信息，并提出目标期刊近期近邻文章的定向检索范围。
 
-## 共同起点
+## 先判断入口
 
-1. 建立研究快照：论文类型、研究对象、核心问题、主要方法、关键结果、贡献、当前成熟度。
-2. 询问作者约束：必须收录体系、学科范围、OA/APC 上限、语言、时间、地域或机构政策、明确排除项。
-3. 把会改变候选集合或写作契约的缺失项放入确认门；不能替作者补造偏好。
-4. 需要联网时优先读取官方期刊、出版社、索引数据库和正式论文页面；所有正式判断附来源与核验日期。
+先识别当前调用边界，再选择模式 A 或 B：
 
-## 模式一：跨期刊筛选
+- **独立分析**：只做用户要求的研究定位、候选比较或目标期刊分析，不自行启动正式 `paperline` 流程。
+- **正式 P2**：由 `paperline` 调用，或用户已明确要求接入该流程时，继承当前稿件 ID/修订、研究画像、作者约束、期刊状态与已有确认记录；这已经授权本 Skill 准备正式交付，无需再问是否要接入流程。仍缺的作者选刊或合同内容确认不能由该入口授权代替。
+- **已有目标或合同**：先检查目标期刊、研究方向、Article Type 与当前稿件是否匹配。复用有效证据与真实作者确认；只补变化的官方条件、样本或受影响规则，不重新做同一轮通用文献检索。
 
-1. 按研究快照生成候选池，并说明每个候选的进入理由。
-2. 逐刊核验硬门，并把候选分别写入 frontmatter 的 `shortlist_candidate_ids`、`unknown_hard_gate_candidates` 和 `failed_hard_gate_candidates`。任一硬门失败即淘汰；硬门未知则进入“待核验”，不得视为通过。
-3. 仅对硬门通过者应用作者确认的软偏好和权重。每个分数必须附事实、来源与不确定性。
-4. 输出淘汰表、待核验表和不超过 3—5 本的短名单；不要伪造接受率或预测录用概率。
-5. 请作者最终选择。Skill 可以推荐顺序，但不得代替作者把状态改为 `confirmed`；confirmed 要求 unknown 列表严格为空，且 `selected_candidate_id` 属于短名单、不属于 failed 列表。
-6. 生成选择证据和 `target-journal-decision.md`，运行：
+### 模式 A：研究内容 → 期刊 → 写作参考
 
-```powershell
-python scripts/validate_journal_artifacts.py <path-to-target-journal-decision.md>
-```
+适用于研究想法、摘要、提纲、部分初稿或尚未确定投稿方向的论文。
 
-校验通过只表示选刊交接完整，不表示目标期刊写作画像已完成。
+按以下顺序执行：
 
-## 模式二：选定期刊后的双轨画像
+1. 读取[研究定位](references/research-positioning.md)，先理解对象、问题、方法、数据/实验、结果、创新、场景和完成程度。
+2. 提出 2–4 个 Research Positioning，区分主要、次要和边缘定位；说明各自读者、期刊类型和检索方向。
+3. 读取[文献与期刊发现](references/literature-and-journal-discovery.md)，复用近 3–5 年真实相关论文的证据池，从论文分布反向发现期刊。证据不足时先交由 `literature-research` 定向补齐；不要根据模型记忆直接列期刊。
+4. 形成 3–8 本候选，再收敛到不超过 3–5 本主要候选。对每本写进入理由、近期连续性、代表性近邻论文、理论/方法/工程定位和投稿时应强调的贡献。
+5. 读取[期刊核验](references/journal-verification.md)，核验 Scope、Article Type、SCI/EI/Scopus 等索引、OA/APC、官方投稿要求、投稿状态和明显风险。未知写 `unknown`，不等于通过。
+6. 输出 `journal-analysis.md`（或直接在聊天中输出），包含研究理解、Research Positioning、相关文献、论文发表分布、候选期刊、官方条件、对比、推荐和适用条件。不要计算虚假的精确综合分，不预测录用概率。
+7. 用户确定目标期刊后，读取[目标期刊分析](references/target-journal-analysis.md)，先复用证据池；缺少目标刊近邻样本时，由 `literature-research` 按限定范围补齐该刊近 3–5 年同 Article Type、同领域、同对象/方法/证据的约 5–15 篇论文，再由本 Skill 分析并输出可长期复用的 `target-journal-guide.md`。它的适用范围是“目标期刊 × 研究方向 × Article Type”，不是某一篇论文的一次性报告。
 
-1. 锁定目标期刊、栏目、论文类型和选择依据；从筛选报告进入时核对作者选择一致。若作者直接指定期刊且两份稳定决策文件尚不存在，先按 `contracts-and-handoffs.md` 生成并校验简化的 `journal-selection-evidence.md` 与 `target-journal-decision.md`，再继续画像。
-2. 建立统一来源池：官方 `[O#]`、目标期刊论文、其他期刊高度相关论文、用户范文和二手线索。
-3. 将论文样本按 A/B/C/D 分类并记录 `J/R/E` 理由；再按章节分别记录用途 `U`。
-4. 运行期刊轨道：用官方、A、C 生成 `journal-writing-profile.md`。
-5. 运行领域轨道：用 A、B 生成 `field-writing-blueprint.md`。
-6. 逐项融合硬要求、期刊偏好、领域论证规律和当前论文条件，生成 `target-journal-writing-contract.md`。
-7. 高影响冲突交给作者确认。只有状态为 `confirmed`、阻塞项为空、三份文件的 `writing_profile_evidence_id` 一致，且契约已绑定选刊证据版本和决策文件哈希时，才允许交给 `paper-navigator`。
-8. 运行：
+### 模式 B：完整论文 → 适合投稿的期刊
 
-```powershell
-python scripts/validate_journal_artifacts.py <path-to-target-journal-writing-contract.md>
-```
+适用于用户说“我的论文已经写好了，适合投哪里”。不要简单重复模式 A：
 
-## 确认门
+1. 先读取[研究定位](references/research-positioning.md)，检查 Title、Abstract、Introduction、Methods、Results、Discussion、Conclusion、Figures/Tables 和 References，识别论文真实定位、主要贡献、证据强度和当前叙事方向。
+2. 利用 References 和已有 `literature-evidence.md` 观察论文连接的学术社区和高频期刊；如需扩展近年相关论文，交由 `literature-research` 增量补齐。
+3. 按[期刊核验](references/journal-verification.md)检查候选条件，回答当前稿件更适合哪些期刊、哪些期刊虽相关但写法不合适、投不同期刊需要改哪些部分，以及属于小幅适配还是明显改变叙事。
+4. 输出同样的 `journal-analysis.md`；用户选定目标后，再输出 `target-journal-guide.md`。
 
-出现以下任一情形时暂停最终确认，同时继续完成不依赖该决定的证据整理：
+用户直接指定目标期刊时，可跳过候选发现，直接进入[目标期刊分析](references/target-journal-analysis.md)，但仍须用官方页面核验当前要求。
 
-- 论文类型、目标收录、费用上限或时间约束会改变候选集合；
-- 官方来源缺失、互相冲突或已经过期；
-- 作者要在“更匹配、影响力、速度、费用、开放获取”之间改变权重；
-- 目标期刊、栏目或高影响写作规则尚未由作者确认；
-- 全文不足以支持稳定画像。
+## 正式 P2 的交付与确认
 
-固定确认块：
+正式调用继续复用上面的 `journal-analysis.md`、共享文献证据和匹配的 `target-journal-guide.md`，再按[现有合同接收规则](../paper-navigator/references/journal-contract-intake.md)及 `scripts/validate_journal_artifacts.py` 的既有格式准备正式文件，不另建一套合同 schema。
 
-```text
-需要作者确认：
-已有证据：
-推荐默认值及理由：
-其他选项的影响：
-若不确认的处理：保持 pending_confirmation，不进入下一正式交接。
-```
+1. 将当前稿件画像、作者约束、逐字段官方来源/核验日期、候选取舍整理为 `journal-selection-evidence.md`；未知硬条件保留为未知，不能改写成通过。
+2. 根据作者实际选择准备 `target-journal-decision.md`。缺少最终选择或尚未确认费用、收录等取舍时，保留 `draft` 或 `pending_confirmation`，列出具体待决策项。已有针对当前稿件与条件的明确确认，直接引用，不重复索取。
+3. 复用指南中的双轨分析，按既有正式格式形成 `journal-writing-profile.md`、`field-writing-blueprint.md` 和 `target-journal-writing-contract.md`。这些是当前稿件的合同证据快照，不重建通用文献池；官方要求与样本观察分开，影响贡献、科学边界或内容取舍的事项交作者确认。
+4. 作者确认确切的合同内容后才写 `confirmed`，记录真实确认与版本。对决定和合同分别运行 `scripts/validate_journal_artifacts.py`，将通过的路径、版本与 SHA-256 交回 `paperline`；它负责推进 P2 并交接 P3。候选报告、指南、未确认文件或单独通过的决定不能充当锁刊完成证据。
 
-## 交付边界
+先完成可审查的报告和合同草稿，再就仍缺的具体决定请求作者确认；未确认时可继续准备证据和草稿，但不把 P2 标为完成。校验通过只证明既有格式与文件绑定一致，不代替官方真实性核验或作者确认。
 
-- 默认使用中文，明确区分“官方硬要求、可重复观察、谨慎推断、未知、作者决定”。
-- 不把影响因子、分区、收录、APC、审稿周期或投稿政策当作长期不变事实；正式使用前按核验日期更新。
-- 不复制样本文献的句子，不把单篇文章写法升级为期刊规则。
-- 不直接修改中文论文，不执行英译、投稿或付费操作。
-- 选刊报告只交给画像模式；confirmed 写作契约才交给 `paper-navigator`。
-- 校验器失败时报告失败项，不得宣称已经完成交接。
+## 目标期刊分析的双轨边界
+
+保留简化双轨画像：
+
+- **期刊轨**：官方指南、栏目和目标期刊近期论文，回答编辑范围、读者和文章组织；
+- **领域轨**：跨期刊高相关论文，回答问题、方法、基线、验证和工程证据门槛。
+
+两轨在指南中融合，不强制拆分多个画像文件。样本观察不能升级成官方规则，不能复制样本文句，也不能把整本期刊的泛化“风格”套到当前研究上。
+
+`target-journal-guide.md` 应把相对稳定的研究写法，与需要持续更新的政策和样本信息分开保存。后续论文默认先做增量核对；只有研究方向、Article Type、栏目、期刊政策或近年发文重点发生实质变化时，才完整重做。
+
+## 信息来源原则
+
+官方期刊/出版社页面优先于第三方信息；索引使用指定数据库官方记录；近期论文使用 DOI、出版社页面或可确认全文。当前 Scope、APC、Indexing、政策和投稿状态注明核验日期，并在投稿前复核。
+
+不伪造接受率、审稿周期或录用概率；找不到的信息写 `unknown`，并说明它影响哪个判断。单篇相似论文只能证明存在先例，多篇跨年份相关论文才支持持续发表判断。
+
+## 输出边界
+
+如果用户只需要研究定位、候选期刊或目标期刊论文分析，只完成对应部分，不强制跑完整流程。`paperline` 正式 P2 调用沿用上面的合同交付与校验；独立分析不默认生成正式合同。
